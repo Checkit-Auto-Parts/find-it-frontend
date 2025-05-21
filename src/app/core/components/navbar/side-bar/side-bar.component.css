@@ -1,0 +1,87 @@
+.app-name{
+    display: none;
+}
+.logo-container{
+    width: 5rem;
+    margin-right: 0.2rem;
+}
+.name-container{
+    text-align: right;
+}
+img.logo{
+    width: 100%;
+}
+
+
+h1 {
+    padding: 0 1rem;
+}
+
+h2 {
+    padding: 1rem;
+}
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+mat-sidenav-container {
+    height: 100%;
+}
+
+
+mat-sidenav {
+    padding-top: 3.5rem;
+    transition: width 0.3s ease;
+
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+
+    .entry {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+}
+
+mat-sidenav-content {
+    padding-top: 3.5rem;
+
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+}
+
+.expanded {
+    width: 286px;
+}
+
+  .sidenav-item-active{
+    background-color: var(--green-disabled);
+    border-right: 4px solid var(--green);
+    border-radius: 0.25rem;
+  }
+
+  
+@media (min-width: 768px) {
+    .app-name{
+        display: block;
+    }
+    .logo-container{
+        margin-right: 0.4rem;
+    }
+}
+
+mat-expansion-panel {
+    box-shadow: none !important;
+}
+
+mat-expansion-panel-header {
+    padding: 0 16px;
+    font-size: 16px;
+}

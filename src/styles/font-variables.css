@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'lato';
+    src: local("lato"), url('/assets/font/Lato-Regular.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'montserrat-b';
+    src: local("montserrat-b"), url('/assets/font/Montserrat-Bold.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'montserrat-sb';
+    src: local("montserrat-sb"), url('/assets/font/Montserrat-SemiBold.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'montserrat-m';
+    src: local("montserrat-m"), url('/assets/font/Montserrat-Medium.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root{    
+    --montserrat-b: 'montserrat-b', 'Arial', 'Times New Roman';
+    --montserrat-sb: 'montserrat-sb', 'Arial', 'Times New Roman';
+    --montserrat-m: 'montserrat-m', 'Arial', 'Times New Roman';
+    --lato: 'lato', 'Arial', 'Times New Roman';
+
+    --table-font-size: 1rem;
+    --table-header-font-weight: bold;
+}

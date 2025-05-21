@@ -1,0 +1,46 @@
+.close-button{
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: var(--white);
+}
+.message-body{
+    text-align: center;
+    word-wrap: break-word !important;
+}
+.action-container{
+    /* offset-2 col-8 offset-md-3 col-md-6 */
+    display: flex;
+    justify-content: space-around;
+}
+.action-container button{
+    width: 140px;
+    /* background-color: var(--blue-message); */
+    height: 48px;    
+    flex-shrink: 0;
+    border-radius: 50px; 
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .action-container button{
+        justify-content: space-evenly;
+        width: 160px; 
+        gap: 20px;
+    }
+}
+  
+  /* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .action-container button{
+        width: 180px; 
+    }
+}
+  
+  /* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+  
+  /* XX-Large devices (extra large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}

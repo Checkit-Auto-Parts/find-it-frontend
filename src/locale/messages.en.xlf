@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="es-VE" datatype="plaintext" original="ng2.template">
+		<body>
+			<trans-unit id="1" datatype="html">
+				<source>
+					Coloque sus credenciales
+				</source>
+				<target>
+					Use your credentials
+				</target>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						6
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="2" datatype="html">
+				<source>
+					Ingrese un correo electrónico
+				</source>
+				<target>
+					Username
+				</target>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						9
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="3" datatype="html">
+				<source>
+					Ingrese su contraseña
+				</source>
+				<target>
+					Password
+				</target>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						14
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="4" datatype="html">
+				<source>
+					Forgot password?
+				</source>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						18
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="5" datatype="html">
+				<source>
+					Solicitar una nueva contraseña
+				</source>
+				<target>
+					Request a new password
+				</target>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						18
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="6" datatype="html">
+				<source>
+					Iniciar sesiónnnnn
+				</source>
+				<target>
+					Login
+				</target>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						21
+					</context>
+				</context-group>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

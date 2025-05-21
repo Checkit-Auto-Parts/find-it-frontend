@@ -1,0 +1,31 @@
+.app-name{
+    display: none;
+}
+.logo-container{
+    width: 5rem;
+    margin-right: 0.2rem;
+}
+.name-container{
+    text-align: right;
+}
+img.logo{
+    width: 100%;
+}
+
+
+h1 {
+    padding: 0 1rem;
+}
+
+h2 {
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .app-name{
+        display: block;
+    }
+    .logo-container{
+        margin-right: 0.4rem;
+    }
+}

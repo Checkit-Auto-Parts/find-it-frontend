@@ -1,0 +1,36 @@
+<div class="container-fluid">
+	<div cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle class="row">
+		<div *ngIf="data.status" [ngClass]="{'bg-green': data.status==true}" class="col-9 p-3">
+			<h2 class="white mb-0">{{_title}}</h2>
+		</div>
+		<div *ngIf="!data.status" [ngClass]="{'bg-red': data.status==false}" class="col-9 p-3">
+			<h2 class="white mb-0">{{_title}}</h2>
+		</div>
+		<div class="close-button col-3 py-3 py-md-auto" (click)="closeDialog()"
+			[ngClass]="{'bg-red': data.status==false, 'bg-green': data.status==true}">
+			<mat-icon>close</mat-icon>
+		</div>
+	</div>
+
+	<div class="row mt-4 mb-4">
+		<div class="col-12">
+			<p class="message-body px-0 px-md-2">{{data.messageBody}}</p>
+		</div>
+	</div>
+
+	<div *ngIf="data.detailsList" class="row mb-4">
+		<div class="col">
+			<ul>
+				<li *ngFor="let detail of data.detailsList">{{detail}}</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row mt-3 mb-4 mx-0">
+		<div class="col-12 action-container">
+			<button mat-flat-button color="primary" class="" tabindex='0' (click)="aceptar()">
+				<h2 class="mb-0">Aceptar</h2>
+			</button>
+		</div>
+	</div>
+</div>

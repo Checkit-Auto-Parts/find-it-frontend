@@ -1,0 +1,128 @@
+@if(permissionParameters){
+<mat-toolbar color="accent">
+	<button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<div class="logo-container">
+		<img class="logo" src="../../assets/img/svg/logo.svg" alt="" />
+	</div>
+	<h1 class="app-name">Equipos Rentados</h1>
+	<div class="ms-auto name-container">
+		<div class="lato-m black">{{ _user?.userName }}</div>
+		<div class="subtitle-m">{{ roleEnumString }} </div>
+	</div>
+</mat-toolbar>
+
+<mat-sidenav-container autosize="true">
+	<mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="(isMobile ? 'over' : 'side')" [opened]="!isMobile">
+		<mat-nav-list>
+
+			<ng-container>
+				@if(hasPermission(permissionParameters.homeModule)){
+				<!-- main dashboard -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./dashboard']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>home</mat-icon>
+						<span *ngIf="!isCollapsed">Home</span>
+					</span>
+				</a>
+				}
+				<!-- supplier internal -->
+				@if(hasPermission(permissionParameters.supplierModule)){
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-int']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>inventory</mat-icon>
+						<span *ngIf="!isCollapsed">Suplidores</span>
+					</span>
+				</a>
+				}
+				@if(hasPermission(permissionParameters.maintenanceModule)){
+				<!-- maintenance -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./maintenance']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>engineering</mat-icon>
+						<span *ngIf="!isCollapsed">Mantenimiento</span>
+					</span>
+				</a>
+				}
+				@if(hasPermission(permissionParameters.userModule)){
+				<!-- user -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./user']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>person</mat-icon>
+						<span *ngIf="!isCollapsed">Usuarios</span>
+					</span>
+				</a>
+				}
+				@if(hasPermission(permissionParameters.crewModule)){
+				<!-- area request -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./equipment']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>assignment</mat-icon>
+						<span *ngIf="!isCollapsed">Equipos</span>
+					</span>
+				</a>
+				}
+				<!-- <a  *ngIf="_showItemsAdmin"
+              mat-list-item
+              (click)="simpleToggle()"
+              [routerLink]="['./equipment/request-list-detailed']"
+              routerLinkActive="sidenav-item-active">
+            <span class="entry">
+              <mat-icon>assignment</mat-icon>
+              <span *ngIf="!isCollapsed">Solicitudes</span>
+            </span>
+          </a> -->
+			</ng-container>
+
+			<ng-container>
+				<!-- supplier external -->
+				@if(hasPermission(permissionParameters.supplierPanelModule)){
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/dashboard']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>dashboard</mat-icon>
+						<span *ngIf="!isCollapsed">Panel suplidor</span>
+					</span>
+				</a>
+				}
+				@if(hasPermission(permissionParameters.equipmentModule)){
+				<!-- equipment -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/equipment']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>forklift</mat-icon>
+						<span *ngIf="!isCollapsed">Equipamiento</span>
+					</span>
+				</a>
+				}
+				@if(hasPermission(permissionParameters.operatorModule)){
+				<!-- operator -->
+				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/operator']"
+					routerLinkActive="sidenav-item-active">
+					<span class="entry">
+						<mat-icon>engineering</mat-icon>
+						<span *ngIf="!isCollapsed">Operador</span>
+					</span>
+				</a>
+				}
+			</ng-container>
+
+			<a mat-list-item (click)="logOut()">
+				<span class="entry">
+					<mat-icon>logout</mat-icon>
+					<span *ngIf="!isCollapsed">Logout</span>
+				</span>
+			</a>
+		</mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content *ngIf="isAuthorized()">
+		<router-outlet></router-outlet>
+	</mat-sidenav-content>
+</mat-sidenav-container>
+}

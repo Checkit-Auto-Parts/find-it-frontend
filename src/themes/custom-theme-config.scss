@@ -1,0 +1,284 @@
+@use '@angular/material' as mat;
+@include mat.elevation-classes();
+@include mat.app-background();
+
+/* #region Paleta de colores de HIT - Azul*/
+$mat-ways-azul: (
+    50 : #E8ECF1,
+    100 : #B7C3D3,
+    200 : #94A6BD,
+    300 : #637E9F,
+    400 : #45658D,
+    500 : #163E70,
+    600 : #143866,
+    700 : #102C50,
+    800 : #0C223E,
+    900 : #091A2F,
+    A100 : #bed6ff,
+    A200 : #8bb6ff,
+    A400 : #5896ff,
+    A700 : #3f86ff, 
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+/* #endregion Paleta de colores de HIT - Azul*/
+
+/* #region Paleta de colores de HIT - Verde*/
+$mat-ways-verde: (
+    50 : #E7F8F7, 
+    100 : #B6EAE7, 
+    200 : #92E0DB, 
+    300 : #61D1CB, 
+    400 : #42C9C1, 
+    500 : #13BBB1, 
+    600 : #11AAA1, 
+    700 : #0D857E, 
+    800 : #0A6761, 
+    900 : #084F4A, 
+    A100 : #adffce, 
+    A200 : #7affaf, 
+    A400 : #47ff90, 
+    A700 : #2eff81, 
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+/* #endregion Paleta de colores de HIT - Verde*/
+
+/* #region Paleta de colores de HIT - Rojo*/
+$mat-ways-rojo: (
+    50 : #FEEEEF, 
+    100 : #FACCCD, 
+    200 : #F8B3B5, 
+    300 : #F59094, 
+    400 : #F37A7F, 
+    500 : #F0595F, 
+    600 : #DA5156, 
+    700 : #AA3F43, 
+    800 : #843134, 
+    900 : #652528, 
+    A100 : #ffe4f9, 
+    A200 : #ffbaf1, 
+    A400 : #ff86e8, 
+    A700 : #ff40df, 
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+/* #endregion Paleta de colores de HIT - Rojo*/
+
+/* #region Variables de definicion */
+
+//Variables para colores
+$ways-app-primary: mat.m2-define-palette($mat-ways-azul);
+$ways-app-accent: mat.m2-define-palette($mat-ways-verde);
+$ways-app-warn: mat.m2-define-palette($mat-ways-rojo);
+//Variables de tipografia
+$ways-typography-montserrat: mat.m2-define-typography-config(
+    $font-family: var(--montserrat-m),
+);
+$ways-typography-lato: mat.m2-define-typography-config(
+    $font-family: var(--lato),
+);
+
+/* #endregion */
+
+/*
+    NOTAS: 
+    **Se puede especificar la altura de un componente, en este caso estoy indicando la densidad solo a 
+    los que tengan las sig clase.
+    **Si quisiera agregar la densidad a todo el tema, entonces le agrego una propiedad adicional en nuestro 
+    define-light-theme asi: density: -2
+*/
+
+
+/* #region Valores que aplicara para todo el tema */
+
+//Definicion del tema en sí, esto aplica a todos los componentes del material
+$ways-app-theme: mat.m2-define-light-theme(  
+    (
+        color: (
+            primary: $ways-app-primary,
+            accent: $ways-app-accent,
+            warn: $ways-app-warn,
+        ),
+        typography: $ways-typography-lato,
+    )
+);
+
+/* #endregion */
+
+
+
+/* #region mat-form-field */
+.form-field-dense {
+    @include mat.form-field-density(-3);
+}
+/*es el espacio que aparece debajo de nuestra lista de cantidad de items por pagina*/
+.form-field-base-hidden .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+}
+/* #endregion mat-form-field */
+
+/* #region mat-stepper */
+
+/* #endregion mat-stepper */
+
+
+/* #region tabla */
+
+/* #region contenedores */
+// .container {
+//   padding: 16px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   max-width: 100%;
+// }
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.3em;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-bottom: 1.8rem;
+}
+.filters-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  width: 100%;
+  gap: 0.5em;
+  margin-bottom: 1rem;
+  button.stretch{
+    align-self: stretch!important;
+    height: auto;
+  }
+}
+/* #endregion contenedores */
+
+//Se tiene que definir una clase "action" en el "td" que contenga algun icono o boton
+@mixin mat-table-typography {
+    .mat-table{
+        font-size: var(--table-font-size);
+        thead{
+            th{
+                font-weight: bold;
+            }
+            th.center-th{                
+                text-align: center!important;  
+            }}
+        tbody{
+            tr.selected-row{
+                background-color: var(--green-disabled);
+            }
+            td{
+                font-weight: normal;
+                text-align: left!important;  
+                justify-self: center;
+                .justify{
+                    display: flex;
+                    justify-content: center;
+                }
+                .justify-text-icon{
+                    display: flex;
+                    column-gap: 0.4em;
+                }
+                .justify-large{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }}
+            td.center-td{
+                text-align: center!important;  
+            }}
+    }
+}  
+@include mat-table-typography;
+
+//Fila que se muestra cuando no se encontraron datos en la busqueda
+.no-data {
+    width: 100%;
+    text-align: center;
+    background-color: var(--white);
+    border: 1px solid var(--gray-border);
+    border-radius: 0.3em;
+    padding: 1rem 0.2rem;
+    margin-top: 0.4rem;
+}
+
+/* #region paginator */
+.custom-paginator-style{
+    width: 100%;
+    margin-top: 0.4rem;
+}
+//los demas estilos van dentro del componente unico reutilizable
+/* #endregion paginator */
+.back-button-container{
+    // text-align: center;
+    width: 100%;
+    margin-top: 0.4rem;
+    button{
+        background-color: var(--green-disabled)!important;
+    }
+  }
+/* #endregion tabla */
+
+/* #region dialog*/
+.custom-dialog-container  {
+    // border-radius: 0rem !important
+    width: 420px!important;
+    max-width: 450px!important;
+    max-height: 30%!important;
+ }
+/* #endregion */
+
+//seteo el tema custom
+@include mat.all-component-themes($ways-app-theme);
+

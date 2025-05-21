@@ -1,0 +1,46 @@
+
+:root {
+    --blue: #143866;
+    --green: #11AAA1;
+    --green-disabled: #B6EAE7;
+    --red: #DA5156;
+    --blue-gray: #94A6BD;
+    --blue-message: #45658D;
+    --neutro: #9E9E9E;
+    --gray: #CACACA;
+    --gray-letter: #585858;
+    --gray-border: #CACACA;
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --list-pink: #F8B3B5;
+    --list-blue: #637E9F;
+    --list-cyan: #92E0DB;
+    --list-green: #11AAA1;
+    --list-orange: #FFA844;
+    --list-red: #AA3F43;
+    --list-dark-blue: #102C50;
+}
+
+
+.color-list-pink {
+    color: var(--list-pink);
+}
+.color-list-blue {
+    color: var(--list-blue);
+}
+.color-list-cyan {
+    color: var(--list-cyan);
+}
+.color-list-green {
+    color: var(--list-green);
+}
+.color-list-orange {
+    color: var(--list-orange);
+}
+.color-list-red {
+    color: var(--list-red);
+}
+.color-list-dark-blue {
+    color: var(--list-dark-blue);
+}

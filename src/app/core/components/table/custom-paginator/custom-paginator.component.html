@@ -1,0 +1,26 @@
+<div class="pagination-buttons">
+	<button mat-raised-button class="my-0 mx-3" color="basic" (click)="goToPreviousPage()"
+		[disabled]="currentPage === 0">
+		Anterior
+	</button>
+
+	<div class="page-number">
+		<form [formGroup]="formGroupPaginator">
+			<mat-form-field class="form-field-dense">
+				<mat-select formControlName="rowsPerPageCtrl" (selectionChange)="selectRowsNumber($event.value)">
+					<mat-option *ngFor="let numeroFilas of rowsPerPageList" [value]="numeroFilas">
+						{{ numeroFilas }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</form>
+		<ng-container>
+			Pag. {{ currentPage + 1 }} de {{ totalRecords > 0 ? (totalRecords / rowsPerPage | roundNumber : 'up') : 1 }}
+		</ng-container>
+	</div>
+
+	<button mat-raised-button class="my-0 mx-3" color="basic" (click)="goToNextPage()"
+		[disabled]="(currentPage + 1) * rowsPerPage >= totalRecords">
+		Siguiente
+	</button>
+</div>
