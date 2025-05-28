@@ -10,14 +10,16 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { LocalStorageKeysService } from '../../services/local-storage-keys.service';
 import { DialogMessageService } from '../../../../core/services/dialog-message.service';
 import { LoginResponseDTO } from '../../models/user-login-response.dto';
+import { LocalizedAssetPipe } from "../../../../core/pipes/get-base-path-from-current-lang.pipe";
 @Component({
   selector: 'app-login',
   imports: [
     CoreModule,
-		ReactiveFormsModule,
-		MaterialFormModule,
-		MatCardModule,
-  ],
+    ReactiveFormsModule,
+    MaterialFormModule,
+    MatCardModule,
+    LocalizedAssetPipe
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true

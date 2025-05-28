@@ -1,3 +1,4 @@
+/*
 @font-face {
     font-family: 'lato';
     src: local("lato"), url('/assets/font/Lato-Regular.ttf') format("truetype");
@@ -24,7 +25,7 @@
     font-weight: normal;
     font-style: normal;
 }
-
+*/
 :root{    
     --montserrat-b: 'montserrat-b', 'Arial', 'Times New Roman';
     --montserrat-sb: 'montserrat-sb', 'Arial', 'Times New Roman';

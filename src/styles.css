@@ -1,1 +1,180 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "lato", "Helvetica Neue", sans-serif;
+}
+
+/* #region textos */
+
+/* Estilos generales (por defecto, mobile first) */
+h1 {
+  font-family: var(--montserrat-b);
+  font-weight: bold;
+  font-size: 1.6em;
+  font-style: normal;
+}
+h2 {
+  font-family: var(--montserrat-sb);
+  font-weight: 600;
+  font-size: 1em;
+  font-style: normal;
+}
+h3 {
+  font-family: var(--montserrat-m);
+  font-weight: 500;
+  font-size: 0.6em;
+  font-style: normal;
+}
+.subtitle-m {
+  font-family: var(--montserrat-m);
+  font-weight: 500;
+  font-size: 0.5em !important;
+  font-style: normal;
+  line-height: normal;
+  text-align: end;
+}
+.lato-m {
+  font-family: var(--lato-r);
+  font-size: 0.6em;
+}
+.lato-s {
+  font-family: var(--lato-r);
+  font-size: 0.425em;
+}
+a {
+  font-family: var(--lato-m);
+  text-decoration: none;
+}
+.pointer {
+  font-family: var(--lato-m);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mons-b {
+  font-family: var(--montserrat-b);
+  font-weight: bold;
+  font-size: 1.6em;
+  font-style: normal;
+}
+/* #endregion texto */
+
+/* #region colors */
+.red {
+  color: var(--red);
+}
+.green {
+  color: var(--green);
+}
+.blue {
+  color: var(--blue);
+}
+.neutro {
+  color: var(--neutro);
+}
+.black {
+  color: var(--black);
+}
+.white {
+  color: var(--white);
+}
+.bg-blue {
+  background-color: var(--blue);
+}
+.bg-red {
+  background-color: var(--red);
+}
+.bg-green {
+  background-color: var(--green);
+}
+.bg-neutro {
+  background-color: var(--neutro);
+}
+/* #endregion colors */
+
+/* #region Varios */
+.selector {
+  cursor: pointer;
+}
+/* #endregion */
+
+/* #region form-field */
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1em;
+}
+.f-1 {
+  flex: 1 1 100%;
+}
+.f-2 {
+  flex: 1 1 48%;
+}
+.f-3 {
+  flex: 1 1 32%;
+}
+/* #endregion */
+
+/* #region Media queries */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 1.8em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  h3 {
+    font-size: 0.8em;
+  }
+  .lato-m {
+    font-size: 0.8em;
+  }
+  .lato-s {
+    font-size: 0.625em;
+  }
+  .subtitle-m {
+    font-size: 0.8em !important;
+  }
+  .txt-bold {
+    font-size: 1.8em;
+  }
+  .txt-m {
+    font-size: 0.8em;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1em;
+  }
+  .mons-bold {
+    font-size: 2em;
+  }
+  .txt-m {
+    font-size: 0.875em;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* XX-Large devices (extra large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+}
+
+/* #endregion Media queries */

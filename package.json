@@ -4,10 +4,10 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build",
+		"build": "ng build --configuration=production && node copy-proxy-server.js",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
-		"serve:ssr:find-it-frontend": "node dist/find-it-frontend/server/server.mjs"
+		"serve:ssr:find-it-frontend": "node dist/find-it-frontend/proxy-server.mjs"
 	},
 	"private": true,
 	"dependencies": {
