@@ -3,7 +3,7 @@ name: Deploy Angular App to SmarterASP.NET
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
