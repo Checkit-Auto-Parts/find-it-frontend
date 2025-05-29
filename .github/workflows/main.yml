@@ -1,0 +1,94 @@
+name: Deploy Angular App to SmarterASP.NET
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clean GitHub Actions cache
+        run: rm -rf ${{ github.workspace }}/_actions
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.12.1'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app (SSR and Prerender)
+        run: npm run build --congiguration=production
+
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+      - name: Remove existing node_modules
+        run: rm -rf ${{ github.workspace }}/dist/find-it-fe/server/node_modules
+
+      - name: Install server dependencies locally
+        run: |
+          ls ${{ github.workspace }}/dist/find-it-fe/server
+          cd ${{ github.workspace }}/dist/find-it-fe/server
+          pwd
+          npm install --omit=dev --verbose
+
+      - name: Deploy to SmarterASP.NET via FTP (browser/en)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/find-it-frontend/browser/en/
+          server-dir: /frontend/dist/angular-ssr/browser/en/
+
+      - name: Deploy to SmarterASP.NET via FTP (browser/es)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/find-it-frontend/browser/es/
+          server-dir: /frontend/dist/angular-ssr/browser/es/
+
+      - name: Deploy to SmarterASP.NET via FTP (server)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/find-it-fe/server/
+          server-dir: /frontend/dist/angular-ssr/server/
+
+      - name: Deploy to SmarterASP.NET via FTP (server/en)
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/find-it-frontend/server/es/
+          server-dir: /frontend/dist/angular-ssr/server/es/
+
+      # - name: Deploy node_modules (server)
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: dist/find-it-fe/server/node_modules/
+      #     server-dir: /frontend/server/node_modules/
+
+      # - name: Install server dependencies
+      #   run: |
+      #     ssh ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_HOST }} -p 22 "cd /frontend/server && npm install" # Adjust port if needed
+
+      # - name: Start Node.js Server
+      #   run: |
+      #     ssh ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_HOST }} -p 22 "cd /frontend/server && pm2 start server.mjs" # Assuming you use PM2
