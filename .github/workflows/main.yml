@@ -48,14 +48,14 @@ jobs:
           local-dir: dist/find-it-frontend/browser/es/
           server-dir: /frontend/dist/angular-ssr/browser/es/
 
-      - name: Deploy to SmarterASP.NET via FTP (server)
+      - name: Deploy to SmarterASP.NET via FTP (server/es)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-fe/server/
-          server-dir: /frontend/dist/angular-ssr/server/
+          local-dir: dist/find-it-fe/server/es/
+          server-dir: /frontend/dist/angular-ssr/server/es/
 
       - name: Deploy to SmarterASP.NET via FTP (server/en)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
