@@ -27,6 +27,7 @@
 						"browser": "src/main.ts",
 						"polyfills": ["zone.js"],
 						"tsConfig": "tsconfig.app.json",
+						"allowedCommonJsDependencies": ["crypto-js"],
 						"assets": [
 							{ "glob": "**/*", "input": "public" },
 							{ "glob": "**/*", "input": "src/assets/", "output": "/assets/" },
@@ -43,7 +44,15 @@
 						"server": "src/main.server.ts",
 						"prerender": true,
 						"localize": true,
-						"ssr": { "entry": "src/server.ts" }
+						"ssr": { "entry": "src/server.ts" },
+						"optimization": {
+							"scripts": true,
+							"styles": {
+								"minify": true,
+								"inlineCritical": true
+							},
+							"fonts": true
+						}
 					},
 					"configurations": {
 						"production": {
@@ -77,25 +86,6 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
-					"configurations": {
-						"production": {
-							"buildTarget": "find-it-frontend:build:production"
-						},
-						"development": {
-							"buildTarget": "find-it-frontend:build:development"
-						}
-					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n",
-					"options": {
-						"format": "xlf2",
-						"outputPath": "src/locale"
-					}
-				},
 				"server": {
 					"builder": "@angular-devkit/build-angular:server",
 					"options": {
@@ -116,8 +106,26 @@
 							"outputPath": "dist/find-it-frontend/server/en",
 							"localize": ["en"]
 						}
+					}
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "find-it-frontend:build:production"
+						},
+						"development": {
+							"buildTarget": "find-it-frontend:build:development"
+						}
 					},
-					"defaultConfiguration": "production"
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"format": "xlf2",
+						"outputPath": "src/locale"
+					}
 				},
 				"prerender": {
 					"builder": "@angular-devkit/build-angular:prerender",
@@ -128,6 +136,14 @@
 						"production": {
 							"browserTarget": "find-it-frontend:build:production",
 							"serverTarget": "find-it-frontend:server:production"
+						},
+						"production-es": {
+							"browserTarget": "find-it-frontend:build:production-es",
+							"serverTarget": "find-it-frontend:server:production-es"
+						},
+						"production-en": {
+							"browserTarget": "find-it-frontend:build:production-en",
+							"serverTarget": "find-it-frontend:server:production-en"
 						}
 					},
 					"defaultConfiguration": "production"
