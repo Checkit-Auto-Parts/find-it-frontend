@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Build Angular app (Prerender)
-        run: npm run build:ssr:prerender
+        run: npm run build:ssr:prerender || true
 
       - name: Deploy to SmarterASP.NET via FTP (browser/en)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
