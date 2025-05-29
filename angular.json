@@ -96,6 +96,29 @@
 						"outputPath": "src/locale"
 					}
 				},
+				"server": {
+					"builder": "@angular-devkit/build-angular:server",
+					"options": {
+						"outputPath": "dist/find-it-frontend/server",
+						"main": "src/main.server.ts",
+						"tsConfig": "tsconfig.server.json"
+					},
+					"configurations": {
+						"production": {
+							"outputPath": "dist/find-it-frontend/server",
+							"localize": ["es", "en"]
+						},
+						"production-es": {
+							"outputPath": "dist/find-it-frontend/server/es",
+							"localize": ["es"]
+						},
+						"production-en": {
+							"outputPath": "dist/find-it-frontend/server/en",
+							"localize": ["en"]
+						}
+					},
+					"defaultConfiguration": "production"
+				},
 				"prerender": {
 					"builder": "@angular-devkit/build-angular:prerender",
 					"options": {

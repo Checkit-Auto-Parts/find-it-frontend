@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "outDir": "../../dist/find-it-fe/server",
+      "target": "ES2022",
+      "types": [
+        "node",
+        "@angular/localize"
+      ],
+      "esModuleInterop": true
+    },
+    "files": ["src/main.server.ts", "src/app/app.config.server.ts"],
+    "include": ["src/**/*.server.ts"],
+    "exclude": ["src/**/*.browser.ts", "src/environments/*.browser.ts"]
+  } 
