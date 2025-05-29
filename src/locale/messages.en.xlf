@@ -2,13 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
 	<file source-language="es-VE" datatype="plaintext" original="ng2.template">
 		<body>
-			<trans-unit id="1" datatype="html">
-				<source>
-					Coloque sus credenciales
-				</source>
-				<target>
-					Use your credentials
-				</target>
+			<trans-unit id="login.credentials" datatype="html">
+				<source>Coloque sus credenciales</source>
+				<target>Enter your credentials</target>
 				<context-group purpose="location">
 					<context context-type="sourcefile">
 						src/app/modules/security/components/login/login.component.html
@@ -18,12 +14,12 @@
 					</context>
 				</context-group>
 			</trans-unit>
-			<trans-unit id="2" datatype="html">
+			<trans-unit id="username.error" datatype="html">
 				<source>
 					Ingrese un correo electrónico
 				</source>
 				<target>
-					Username
+					Username is required
 				</target>
 				<context-group purpose="location">
 					<context context-type="sourcefile">
@@ -34,12 +30,12 @@
 					</context>
 				</context-group>
 			</trans-unit>
-			<trans-unit id="3" datatype="html">
+			<trans-unit id="password.error" datatype="html">
 				<source>
 					Ingrese su contraseña
 				</source>
 				<target>
-					Password
+					Password is required
 				</target>
 				<context-group purpose="location">
 					<context context-type="sourcefile">
@@ -50,7 +46,7 @@
 					</context>
 				</context-group>
 			</trans-unit>
-			<trans-unit id="4" datatype="html">
+			<trans-unit id="forgot.password" datatype="html">
 				<source>
 					Forgot password?
 				</source>
@@ -63,7 +59,7 @@
 					</context>
 				</context-group>
 			</trans-unit>
-			<trans-unit id="5" datatype="html">
+			<trans-unit id="request.newPassword" datatype="html">
 				<source>
 					Solicitar una nueva contraseña
 				</source>
@@ -79,9 +75,9 @@
 					</context>
 				</context-group>
 			</trans-unit>
-			<trans-unit id="6" datatype="html">
+			<trans-unit id="login.submit" datatype="html">
 				<source>
-					Iniciar sesiónnnnn
+					Iniciar sesión
 				</source>
 				<target>
 					Login
@@ -92,6 +88,32 @@
 					</context>
 					<context context-type="linenumber">
 						21
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="userName.placeholder" datatype="html">
+				<source>Ingrese su correo electrónico</source>
+				<target>Enter your email</target>
+				<note from="description">Ingrese su correo electrónico</note>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						8
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="password.placeholder" datatype="html">
+				<source>Ingrese su password</source>
+				<target>Enter your password</target>
+				<note from="description">Ingrese su password</note>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/modules/security/components/login/login.component.html
+					</context>
+					<context context-type="linenumber">
+						12
 					</context>
 				</context-group>
 			</trans-unit>

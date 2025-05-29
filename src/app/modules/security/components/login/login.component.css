@@ -24,16 +24,6 @@ body {
     height: 150px;
     border-radius: 1.25rem;
     margin: 0 auto 2rem auto;}
-
-/*img{
-    display: block;
-    margin: 0 auto 3rem auto;
-    border-radius: 1.25rem;
-    width: 440px;
-    height: 95px;
-    flex-shrink: 0;
-}*/
-
 mat-card {
     width: 100%;
     max-width: 448px;
@@ -43,14 +33,6 @@ mat-card {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     background: var(--white, #ffff);
 }
-/*img {
-    display: block;
-    margin: 0 auto 3rem auto;
-    border-radius: 1.25rem;
-    width: 220px;
-    height: 95px;
-    flex-shrink: 0;
-}*/
 mat-form-field {
     width: 100%;
 }

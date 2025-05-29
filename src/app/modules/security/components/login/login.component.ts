@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, inject, LOCALE_ID } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MaterialFormModule } from '../../../../core/modules/material-form.module';
 import { CoreModule } from '../../../../core/modules/core.module';
@@ -10,26 +10,27 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { LocalStorageKeysService } from '../../services/local-storage-keys.service';
 import { DialogMessageService } from '../../../../core/services/dialog-message.service';
 import { LoginResponseDTO } from '../../models/user-login-response.dto';
-import { LocalizedAssetPipe } from "../../../../core/pipes/get-base-path-from-current-lang.pipe";
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   imports: [
     CoreModule,
     ReactiveFormsModule,
     MaterialFormModule,
-    MatCardModule,
-    LocalizedAssetPipe
+    MatCardModule
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   standalone: true
 })
 export class LoginComponent {
-  formLogin: FormGroup;
+	formLogin: FormGroup;
 	public loginValid = false;
 	public username = '';
 	public password = '';
 	tokenExpiration: string = '';
+	private titleService = inject(Title);
+  	private metaService = inject(Meta);
 
 
 	private readonly _destroying$ = new Subject<void>();
@@ -40,7 +41,8 @@ export class LoginComponent {
 		private formBuilder: FormBuilder,
 		private dialogMessageService: DialogMessageService,
 		private localStorageService: LocalStorageService,
-		private keysService: LocalStorageKeysService
+		private keysService: LocalStorageKeysService,
+		@Inject(LOCALE_ID) private locale: string
 		// private msalBroadcastService: MsalBroadcastService,
 		// private authMService: MsalService,
 	) {
@@ -51,6 +53,19 @@ export class LoginComponent {
 	}
 
 	async ngOnInit() {
+		const isSpanish = this.locale === 'es';
+
+		this.titleService.setTitle(
+		isSpanish ? 'Iniciar sesión | Find It' : 'Login | Find It'
+		);
+
+		this.metaService.updateTag({
+		name: 'description',
+		content: isSpanish
+			? 'Página de inicio de sesión segura de Find It.'
+			: 'Secure login page for Find It.',
+		});
+		
 		var tokeActive = this.localStorageService.get(this.keysService.TOKEN_KEY);
 		if (tokeActive) {
 			this.router.navigate(['/app/dashboard']);
