@@ -21,24 +21,11 @@ jobs:
         with:
           node-version: '20.12.1'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Build Angular app (SSR)
+        run: npm run build
 
-      - name: Build Angular app (SSR and Prerender)
-        run: npm run build --congiguration=production
-
-      - name: Clean npm cache
-        run: npm cache clean --force
-
-      - name: Remove existing node_modules
-        run: rm -rf ${{ github.workspace }}/dist/find-it-fe/server/node_modules
-
-      - name: Install server dependencies locally
-        run: |
-          ls ${{ github.workspace }}/dist/find-it-fe/server
-          cd ${{ github.workspace }}/dist/find-it-fe/server
-          pwd
-          npm install --omit=dev --verbose
+      - name: Build Angular app (Prerender)
+        run: npm run build:ssr:prerender
 
       - name: Deploy to SmarterASP.NET via FTP (browser/en)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
