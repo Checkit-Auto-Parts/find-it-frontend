@@ -1,0 +1,115 @@
+
+
+<div class="head mb-3" 
+     cdkDrag
+     cdkDragRootElement=".cdk-overlay-pane"
+     cdkDragHandle
+     mat-dialog-title>
+    <h3> Listado de usuarios </h3>
+</div>
+<div class="container">
+    <div class="filters-container">
+      <mat-form-field class="form-field-dense form-field-base-hidden" appearance="outline">
+        <input  type="text"
+                #filter
+                matInput
+                formControlName=""
+                placeholder="Filtrar por..."
+                (keydown.enter)="applyFilter(filter.value)"/>
+        <mat-icon matSuffix (click)="filter.value = ''" class="selector">
+          close
+        </mat-icon>
+      </mat-form-field>
+      <button mat-flat-button
+              color="primary"
+              class="stretch"
+              (click)="applyFilter(filter.value)">
+        Filtrar 
+        <mat-icon iconPositionEnd>filter_alt</mat-icon>
+      </button>
+      <button mat-flat-button
+              color="accent"
+              class="ms-auto stretch"
+              (click)="returnOperationAreaUserList()">
+        {{ data.isNew ? 'Agregar ' : 'Modificar ' }}
+      </button>
+    </div>
+  
+    <div class="table-container">
+      <table mat-table
+             [dataSource]="dataSource"
+             class="mat-elevation-z8 mat-table"
+             matSort>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.idFormatted }}</td>
+        </ng-container>
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>* Nombre</th>
+          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> * Apellidos </th>
+          <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> * Correo </th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> * Usuario </th>
+          <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="roles">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Roles </th>
+          <td mat-cell *matCellDef="let element">
+            <span *ngFor="let rol of element.roles">
+                {{ rol.name }} 
+                <span *ngIf="element.roles.length > 1">, </span>
+            </span>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef class="center-th">Acción</th>
+            <td mat-cell *matCellDef="let element">
+                <mat-checkbox class="example-margin"
+                              [checked]="element.isAlreadyOnList"
+                              (change)="addToUserIdList($event, element)">
+                </mat-checkbox>
+            </td>
+        </ng-container>   
+  
+        <tr mat-header-row 
+            *matHeaderRowDef="displayedColumns">
+        </tr>
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [ngClass]="{ 'selected-row': row === selectedRow }"
+            (click)="onRowClick(row)">
+        </tr>
+      </table>
+    </div>
+  
+    <div *ngIf="totalRecords == 0" class="no-data">Sin datos</div>
+  
+    <!-- #region Paginator y custom style -->
+    <mat-paginator  [length]="totalRecords"
+                    [pageSize]="rowsPerPage"
+                    (page)="pageChanged($event)"
+                    class="d-none">
+    </mat-paginator>
+  
+    <app-custom-paginator [totalRecords]="totalRecords"
+                          [currentPage]="currentPage"
+                          [rowsPerPageList]="rowsPerPageList"
+                          [rowsPerPage]="rowsPerPage"
+                          (fetchList)="fetchList($event)"
+                          (changeRowsNumber)="triggerPaginatorPageChangedEvent($event)"
+                          class="custom-paginator-style">
+    </app-custom-paginator>
+    <!-- #endregion -->
+</div>
+  

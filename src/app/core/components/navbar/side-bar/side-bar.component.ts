@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CoreModule } from '../../../modules/core.module';
 import { MaterialNavbarModule } from '../../../modules/material-navbar.module';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -15,6 +15,7 @@ import { PermissionParametersDto } from '../../../../modules/user/models/permiss
 import { PermissionDto } from '../../../../modules/user/models/permission.dto';
 import { LocalStorageKeysService } from '../../../../modules/security/services/local-storage-keys.service';
 import { PermissionService } from '../../../../modules/user/services/permission.service';
+import { constrainedMemory } from 'process';
 
 @Component({
 	selector: 'app-side-bar',
@@ -27,6 +28,7 @@ import { PermissionService } from '../../../../modules/user/services/permission.
 		RouterModule,
 		MatButtonModule
 	],
+	providers: [PermissionService],
 	templateUrl: './side-bar.component.html',
 	styleUrl: './side-bar.component.css'
 })
@@ -60,6 +62,8 @@ export class SideBarComponent implements OnInit, AfterViewInit, OnDestroy {
 		private dialogMessageService: DialogMessageService,
 		private keysService: LocalStorageKeysService,
 		private permissionService: PermissionService,
+		private cdr: ChangeDetectorRef,
+		private ngZone: NgZone
 	) { }
 
 	ngOnInit() {
@@ -67,19 +71,31 @@ export class SideBarComponent implements OnInit, AfterViewInit, OnDestroy {
 		// this.getParameters();
 		// this.getPermissions();
 
-		this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-			this.isMobile = screenSize.matches;
-		});
+		// this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
+		// 	this.isMobile = screenSize.matches;
+		// 	console.debug('screenSize: ', screenSize);
+		// 	console.debug('isMobile: ', this.isMobile);
+		// });
 
-		this.subs.add(
-			this.securityService.currentUser$.subscribe(user => {
-				this._user = { ...user! };
-				this.roleEnumString = user?.roles.reduce((init, r) => {
-					return init + r.name + ', '
-				}, '');
-				this.setItemsVisibility(user?.roles!);
-			})
-		);
+		this.observer.observe(['(max-width: 800px)'])
+			.subscribe(result => {
+				this.ngZone.run(() => {
+				this.isMobile = result.matches;
+				// Esto fuerza la detección en el siguiente ciclo
+				this.cdr.detectChanges();
+				});
+			});
+		
+
+		// this.subs.add(
+		// 	this.securityService.currentUser$.subscribe(user => {
+		// 		this._user = { ...user! };
+		// 		this.roleEnumString = user?.roles.reduce((init, r) => {
+		// 			return init + r.name + ', '
+		// 		}, '');
+		// 		this.setItemsVisibility(user?.roles!);
+		// 	})
+		// );
 	}
 	ngAfterViewInit(): void {
 

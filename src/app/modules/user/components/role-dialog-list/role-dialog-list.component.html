@@ -1,0 +1,40 @@
+<h1 class="head mb-3" 
+    mat-dialog-title
+    cdkDrag
+    cdkDragRootElement=".cdk-overlay-pane"
+    cdkDragHandle>
+    Agregar rol
+</h1>
+<mat-dialog-content class="mat-typography">    
+    <div class="table-container mt-2">
+        <table mat-table
+                [dataSource]="dataSource"
+                class="mat-elevation-z8 mat-table"
+                matSort>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+                <td mat-cell *matCellDef="let element">{{ element.idFormatted }}</td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Rol</th>
+                <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef class="center-th">Acción</th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="justify" *ngIf="!exist(element)">
+                        <mat-icon fontIcon="check"
+                                  class="selector green"
+                                  title="Agregar rol"
+                                  (click)="addRole(element)">
+                        </mat-icon>
+                    </div>
+                </td>
+            </ng-container>        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row 
+                *matRowDef="let row; columns: displayedColumns">
+            </tr>
+        </table>
+    </div>
+</mat-dialog-content>

@@ -1,10 +1,10 @@
-@if(permissionParameters){
+<!-- @if(permissionParameters){ -->
 <mat-toolbar color="accent">
 	<button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
 		<mat-icon>menu</mat-icon>
 	</button>
 	<div class="logo-container">
-		<img class="logo" src="../../assets/img/svg/logo.svg" alt="" />
+		<img class="logo" src="assets/img/svg/logo.svg" alt="" />
 	</div>
 	<h1 class="app-name">Equipos Rentados</h1>
 	<div class="ms-auto name-container">
@@ -18,7 +18,7 @@
 		<mat-nav-list>
 
 			<ng-container>
-				@if(hasPermission(permissionParameters.homeModule)){
+				<!-- @if(hasPermission(permissionParameters.homeModule)){ -->
 				<!-- main dashboard -->
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./dashboard']"
 					routerLinkActive="sidenav-item-active">
@@ -27,9 +27,9 @@
 						<span *ngIf="!isCollapsed">Home</span>
 					</span>
 				</a>
-				}
+				<!-- } -->
 				<!-- supplier internal -->
-				@if(hasPermission(permissionParameters.supplierModule)){
+				<!-- @if(hasPermission(permissionParameters.supplierModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-int']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -37,9 +37,9 @@
 						<span *ngIf="!isCollapsed">Suplidores</span>
 					</span>
 				</a>
-				}
-				@if(hasPermission(permissionParameters.maintenanceModule)){
+				} -->
 				<!-- maintenance -->
+				<!-- @if(hasPermission(permissionParameters.maintenanceModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./maintenance']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -47,9 +47,9 @@
 						<span *ngIf="!isCollapsed">Mantenimiento</span>
 					</span>
 				</a>
-				}
-				@if(hasPermission(permissionParameters.userModule)){
+				} -->
 				<!-- user -->
+				<!-- @if(hasPermission(permissionParameters.userModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./user']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -57,9 +57,9 @@
 						<span *ngIf="!isCollapsed">Usuarios</span>
 					</span>
 				</a>
-				}
-				@if(hasPermission(permissionParameters.crewModule)){
+				} -->
 				<!-- area request -->
+				<!-- @if(hasPermission(permissionParameters.crewModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./equipment']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -67,22 +67,11 @@
 						<span *ngIf="!isCollapsed">Equipos</span>
 					</span>
 				</a>
-				}
-				<!-- <a  *ngIf="_showItemsAdmin"
-              mat-list-item
-              (click)="simpleToggle()"
-              [routerLink]="['./equipment/request-list-detailed']"
-              routerLinkActive="sidenav-item-active">
-            <span class="entry">
-              <mat-icon>assignment</mat-icon>
-              <span *ngIf="!isCollapsed">Solicitudes</span>
-            </span>
-          </a> -->
+				} -->
 			</ng-container>
-
 			<ng-container>
 				<!-- supplier external -->
-				@if(hasPermission(permissionParameters.supplierPanelModule)){
+				<!-- @if(hasPermission(permissionParameters.supplierPanelModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/dashboard']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -90,9 +79,9 @@
 						<span *ngIf="!isCollapsed">Panel suplidor</span>
 					</span>
 				</a>
-				}
-				@if(hasPermission(permissionParameters.equipmentModule)){
+				} -->
 				<!-- equipment -->
+				<!-- @if(hasPermission(permissionParameters.equipmentModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/equipment']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -100,9 +89,9 @@
 						<span *ngIf="!isCollapsed">Equipamiento</span>
 					</span>
 				</a>
-				}
-				@if(hasPermission(permissionParameters.operatorModule)){
+				} -->
 				<!-- operator -->
+				<!-- @if(hasPermission(permissionParameters.operatorModule)){
 				<a mat-list-item (click)="simpleToggle()" [routerLink]="['./supplier-ext/operator']"
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
@@ -110,9 +99,8 @@
 						<span *ngIf="!isCollapsed">Operador</span>
 					</span>
 				</a>
-				}
+				} -->
 			</ng-container>
-
 			<a mat-list-item (click)="logOut()">
 				<span class="entry">
 					<mat-icon>logout</mat-icon>
@@ -125,4 +113,4 @@
 		<router-outlet></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>
-}
+<!-- } -->

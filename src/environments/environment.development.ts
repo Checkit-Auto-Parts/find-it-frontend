@@ -1,5 +1,4 @@
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost:5051/api/',
-    redirectUriAD: 'http://localhost:4200/login'
+    apiUrl: 'https://localhost:5051/api/'
 };
