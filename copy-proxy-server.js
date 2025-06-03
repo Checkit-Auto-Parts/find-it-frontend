@@ -6,7 +6,7 @@ const destinationPath = 'dist/find-it-frontend/proxy-server.mjs';
 
 // Check if the source file exists
 if (fs.existsSync(sourcePath)) {
-    // Get the absolute paths of the source and destination files
+    // Get the absolute paths of the source and destination files.
     const sourceAbsolutePath = path.resolve(sourcePath);
     const destinationAbsolutePath = path.resolve(destinationPath);
 
