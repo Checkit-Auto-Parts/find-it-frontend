@@ -1,0 +1,1 @@
+import("./dist/angular-ssr/proxy-server.mjs");
