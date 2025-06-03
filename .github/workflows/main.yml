@@ -29,8 +29,11 @@ jobs:
 
       - name: Build Angular app (Prerender)
         run: npm run build:ssr:prerender || true
+        
+      - name: Copy proxy server
+        run: npm run copy
 
-      - name: Deploy to SmarterASP.NET via FTP (browser/en)
+      - name: Deploy to SmarterASP.NET via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_HOST }}

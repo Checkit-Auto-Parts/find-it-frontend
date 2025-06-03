@@ -4,8 +4,9 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build --configuration=production && node copy-proxy-server.js",
+		"build": "ng build --configuration=production",
 		"build:ssr:prerender": "ng run find-it-frontend:prerender || exit 0",
+		"copy": "node copy-proxy-server.js",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"serve:ssr:find-it-frontend": "node dist/find-it-frontend/proxy-server.mjs"
