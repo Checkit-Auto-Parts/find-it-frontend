@@ -54,7 +54,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-fe/server/es/
+          local-dir: dist/find-it-frontend/server/es/
           server-dir: /frontend/dist/angular-ssr/server/es/
 
       - name: Deploy to SmarterASP.NET via FTP (server/en)
@@ -63,8 +63,8 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-frontend/server/es/
-          server-dir: /frontend/dist/angular-ssr/server/es/
+          local-dir: dist/find-it-frontend/server/en/
+          server-dir: /frontend/dist/angular-ssr/server/en/
 
       # - name: Deploy node_modules (server)
       #   uses: SamKirkland/FTP-Deploy-Action@4.3.0

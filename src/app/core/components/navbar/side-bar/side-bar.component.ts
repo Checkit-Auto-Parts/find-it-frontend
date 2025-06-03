@@ -70,13 +70,6 @@ export class SideBarComponent implements OnInit, AfterViewInit, OnDestroy {
 		// this.isAuthenticated = this.securityService.authenticated();
 		// this.getParameters();
 		// this.getPermissions();
-
-		// this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
-		// 	this.isMobile = screenSize.matches;
-		// 	console.debug('screenSize: ', screenSize);
-		// 	console.debug('isMobile: ', this.isMobile);
-		// });
-
 		this.observer.observe(['(max-width: 800px)'])
 			.subscribe(result => {
 				this.ngZone.run(() => {

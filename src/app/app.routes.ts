@@ -22,7 +22,7 @@ export const routes: Routes = [
         title: 'Find it all',
         // pathMatch: 'full',
         component: SideBarComponent,
-        //canActivate: [authGuard],
+        canActivate: [authGuard],
         children: [
             {
                 path: 'dashboard',
