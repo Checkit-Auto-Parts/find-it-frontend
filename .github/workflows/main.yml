@@ -36,35 +36,35 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-frontend/browser/en/
-          server-dir: /frontend/dist/angular-ssr/browser/en/
+          local-dir: dist/find-it-frontend/
+          server-dir: /frontend/dist/angular-ssr/
 
-      - name: Deploy to SmarterASP.NET via FTP (browser/es)
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-frontend/browser/es/
-          server-dir: /frontend/dist/angular-ssr/browser/es/
+      # - name: Deploy to SmarterASP.NET via FTP (browser/es)
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: dist/find-it-frontend/browser/es/
+      #     server-dir: /frontend/dist/angular-ssr/browser/es/
 
-      - name: Deploy to SmarterASP.NET via FTP (server/es)
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-frontend/server/es/
-          server-dir: /frontend/dist/angular-ssr/server/es/
+      # - name: Deploy to SmarterASP.NET via FTP (server/es)
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: dist/find-it-frontend/server/es/
+      #     server-dir: /frontend/dist/angular-ssr/server/es/
 
-      - name: Deploy to SmarterASP.NET via FTP (server/en)
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/find-it-frontend/server/en/
-          server-dir: /frontend/dist/angular-ssr/server/en/
+      # - name: Deploy to SmarterASP.NET via FTP (server/en)
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: dist/find-it-frontend/server/en/
+      #     server-dir: /frontend/dist/angular-ssr/server/en/
 
       # - name: Deploy node_modules (server)
       #   uses: SamKirkland/FTP-Deploy-Action@4.3.0
