@@ -42,7 +42,7 @@ jobs:
           local-dir: dist/find-it-frontend/
           server-dir: /frontend/dist/angular-ssr/
 
-      - name: Deploy to SmarterASP.NET via FTP (app.js)
+      - name: Deploy to SmarterASP.NET via FTP (app.js and web.config)
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.FTP_HOST }}
