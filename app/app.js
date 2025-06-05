@@ -1,1 +1,1 @@
-import("./dist/angular-ssr/proxy-server.mjs");
+import("./proxy-server.mjs");
