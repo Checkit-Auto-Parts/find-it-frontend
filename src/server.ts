@@ -60,7 +60,10 @@ export function app(): express.Express {
 					{ provide: REQUEST, useValue: req },
 				],
 			})
-			.then((html: string) => res.send(html))
+			.then((html: string) => {
+				html = html.replace(/ng-version="[^"]*"/g, ''); // Remueve el atributo ng-version
+				res.send(html);
+			})
 			.catch((err: any) => next(err));
 	});
 
