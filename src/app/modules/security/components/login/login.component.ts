@@ -11,6 +11,7 @@ import { LocalStorageKeysService } from '../../services/local-storage-keys.servi
 import { DialogMessageService } from '../../../../core/services/dialog-message.service';
 import { LoginResponseDTO } from '../../models/user-login-response.dto';
 import { Meta, Title } from '@angular/platform-browser';
+import { StateExecution } from '../../../../core/models/normalized/stateExecution.model';
 @Component({
   selector: 'app-login',
   imports: [
@@ -84,15 +85,16 @@ export class LoginComponent {
 		}
 	}
 
-	verification(response: LoginResponseDTO) {
+	verification(response: StateExecution<LoginResponseDTO>) {
+		console.log('response => ', response.data?.result.succeeded);
 		if (response != null) {
-			if (!response.result.succeeded) {
+			if (!response.data?.result.succeeded) {
 				this.dialogMessageService.showErrorDialog('Autenticación fallida, revise sus credenciales.');
 			} else {
 				this.loginValid = true;
-				this.authService.saveToken(response);
+				this.authService.saveToken(response.data);
 				// this.setCurrentUser();
-				this.authService.setCurrentUser(response);
+				this.authService.setCurrentUser(response.data);
 				this.redirectByType();
 			}
 		} else {
@@ -106,9 +108,8 @@ export class LoginComponent {
 	}
 
 	loginFailed(e: any) {
-
 		this.dialogMessageService.showErrorDialog(
-			`Por favor reintente mas tarde ${e.error}`
+			`Por favor reintente mas tarde ${e.error.message.description}`
 		);
 	}
 	setCurrentUser() {

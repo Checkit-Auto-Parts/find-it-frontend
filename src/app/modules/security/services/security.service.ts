@@ -47,7 +47,7 @@ export class SecurityService {
 	}
 
 	login(data: UserLoginDto) {
-		return this.http.post<LoginResponseDTO>(this.endPoint + '/login', data);
+		return this.http.post<StateExecution<LoginResponseDTO>>(this.endPoint + '/login', data);
 	}
 
 	registerUser(data: UserRegisterDTO): Observable<RegisterResponseDto> {

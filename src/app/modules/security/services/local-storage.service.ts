@@ -11,9 +11,9 @@ export class LocalStorageService {
     /**Guarda un elemento en el localstorage */
     set = (key: string, data: any) => {
         try {
-            localStorage.setItem(key, JSON.stringify(data));
+            // localStorage.setItem(key, JSON.stringify(data));
             // //!IMPORTANTE DESCOMENTAR CUANDO SALGA A PRUEBAS DE USUARIO
-            // localStorage.setItem(key, JSON.stringify(this.crypto.encrypt(data)));
+            localStorage.setItem(key, JSON.stringify(this.crypto.encrypt(data)));
         } catch (e) {
         }
     }
@@ -23,9 +23,9 @@ export class LocalStorageService {
         try {
             let data = JSON.parse(localStorage.getItem(key)!);
             if (!data) { return null!; }
-            return data;
+            //  return data;
             // //!IMPORTANTE DESCOMENTAR CUANDO SALGA A PRUEBAS DE USUARIO            
-            // return this.crypto.decrypt<T>(data);
+            return this.crypto.decrypt<T>(data);
         } catch (e) {
             return null!;
         }
@@ -57,5 +57,4 @@ export class LocalStorageService {
             return true;
         }
     }
-
 }
