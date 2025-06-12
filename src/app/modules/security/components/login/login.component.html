@@ -1,8 +1,8 @@
-<body [style.background-image]="'linear-gradient(to bottom, rgba(134,134,134,0.7), rgba(255,255,255,0.7)), url(assets/img/damir-kopezhanov-Z5tXjpTqwR8-unsplash.jpg)'">
+<div class="login-container" [style.background-image]="'linear-gradient(to bottom, rgba(134,134,134,0.7), rgba(255,255,255,0.7)), url(assets/img/damir-kopezhanov-Z5tXjpTqwR8-unsplash.jpg)'">
     <mat-card>
         <mat-card-content>
             <form [formGroup]="formLogin">
-                <img class="login-logo"  [style.background-image]="'url(assets/img/svg/f01.svg)'">
+                <img class="login-logo"  [style.background-image]="'url(assets/img/svg/f01.svg)'" alt="" />
                 <h2 class="text-center green mb-5" i18n="@@login.credentials">Coloque sus credenciales</h2>
                 <mat-form-field class="form-field-dense mb-2">
                     <input matInput placeholder="Ingrese su correo electrónico" name="username" formControlName="userName" i18n-placeholder="Ingrese su correo electrónico@@userName.placeholder"/>
@@ -21,4 +21,4 @@
             </form>
         </mat-card-content>
     </mat-card>
-</body>
+</div>
