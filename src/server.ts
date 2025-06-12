@@ -5,9 +5,11 @@ import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, join, resolve } from 'node:path';
 import bootstrap from './main.server';
-import { LOCALE_ID } from '@angular/core';
+import { InjectionToken, LOCALE_ID } from '@angular/core';
 import { REQUEST, RESPONSE } from './express.tokens'
 import cookie from 'cookie';
+
+export const IS_AUTHENTICATED = new InjectionToken<boolean>('IS_AUTHENTICATED');
 
 export function app(): express.Express {
 	const server = express();
@@ -74,6 +76,7 @@ export function app(): express.Express {
 					{ provide: LOCALE_ID, useValue: lang },
 					{ provide: RESPONSE, useValue: res },
 					{ provide: REQUEST, useValue: req },
+					{ provide: IS_AUTHENTICATED, useValue: isAuthenticated } // 👈 ESTA ES LA CLAVE
 				],
 			})
 			.then((html: string) => {
