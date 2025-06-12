@@ -84,6 +84,9 @@ export class SecurityService {
 			// if (accExist) {
 			//   this.logoutMsal();
 			// }
+
+			// Eliminar el token de la cookie
+			document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
 			window.location.reload();
 		});
 	}
@@ -124,6 +127,12 @@ export class SecurityService {
 	saveToken(loginResponse: LoginResponseDTO) {
 		this.localStorageService.set(this.keysService.TOKEN_KEY, loginResponse.token);
 		this.localStorageService.set(this.keysService.USER_KEY, loginResponse);
+
+		// Nuevo: guardamos también en cookie (para que SSR lo pueda leer)
+    	const expireDate = new Date();
+    	expireDate.setDate(expireDate.getDate() + 7); // cookie válida por 7 días (ajusta a gusto)
+
+    	document.cookie = `token=${loginResponse.token}; path=/; expires=${expireDate.toUTCString()}; secure; samesite=strict`;
 	}
 	setTemporalToken(token: string) {
 		this.localStorageService.set(this.keysService.TOKEN_KEY, token);

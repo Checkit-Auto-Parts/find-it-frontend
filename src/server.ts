@@ -7,6 +7,7 @@ import { basename, dirname, join, resolve } from 'node:path';
 import bootstrap from './main.server';
 import { LOCALE_ID } from '@angular/core';
 import { REQUEST, RESPONSE } from './express.tokens'
+import cookie from 'cookie';
 
 export function app(): express.Express {
 	const server = express();
@@ -43,10 +44,25 @@ export function app(): express.Express {
 
 	// All regular routes use the Angular engine
 	server.get('*', (req, res, next) => {
-		/**
-		 * Discard baseUrl as we will provide it with langPath
-		 */
+		
 		const { protocol, originalUrl, headers } = req;
+		// 🔥 Parseamos las cookies del request
+		const cookies = cookie.parse(req.headers.cookie || '');
+		const token = cookies['token'];
+
+		// 🔒 Validamos si el usuario tiene token válido
+		let isAuthenticated = false;
+
+		if (token) {
+			try {
+				// Opcionalmente podrías verificar el token con tu clave secreta (si la tienes)
+				// const decoded = jwt.verify(token, 'your-secret-key');
+				isAuthenticated = true;
+			} catch (err) {
+				console.warn('Invalid token detected during SSR', err);
+				isAuthenticated = false;
+			}
+		}
 		commonEngine
 			.render({
 				bootstrap,
