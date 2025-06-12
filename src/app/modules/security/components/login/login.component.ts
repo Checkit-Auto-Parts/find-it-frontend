@@ -52,7 +52,6 @@ export class LoginComponent {
 			password: ['', [Validators.required]],
 		});
 	}
-
 	async ngOnInit() {
 		const isSpanish = this.locale === 'es';
 
@@ -103,8 +102,12 @@ export class LoginComponent {
 	}
 
 	redirectByType() {
+		const redirectUrl = this.localStorageService.get(this.keysService.URL_REDIRECT);
+		if (redirectUrl) {
+		this.router.navigateByUrl(redirectUrl.toString());
+		} else {
 		this.router.navigate(['/app/dashboard']);
-		//!importante: tener un ojo en la funcion de este reload al hacer login
+		}
 	}
 
 	loginFailed(e: any) {
