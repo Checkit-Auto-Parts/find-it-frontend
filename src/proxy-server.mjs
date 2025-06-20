@@ -1,10 +1,10 @@
 // Development server for SSR with Express and Angular Universal
-// import { app as serverEn } from './server/en/server.mjs';
-// import { app as serverEs } from './server/es/server.mjs';
+import { app as serverEn } from './server/en/server.mjs';
+import { app as serverEs } from './server/es/server.mjs';
 
 // Production server for SSR with Express and Angular Universal
-import { app as serverEn } from './dist/angular-ssr/server/en/server.mjs';
-import { app as serverEs } from './dist/angular-ssr/server/es/server.mjs';
+// import { app as serverEn } from './dist/angular-ssr/server/en/server.mjs';
+// import { app as serverEs } from './dist/angular-ssr/server/es/server.mjs';
 
 import express from 'express';
 import path from 'path';
@@ -16,13 +16,13 @@ const __dirname = path.dirname(__filename);
 
 // ✅ Directorios de archivos estáticos para cada idioma
 // Development directories
-// const browserEs = path.join(__dirname, '../browser/es');
-// const browserEn = path.join(__dirname, '../browser/en');
+const browserEs = path.join(__dirname, '../browser/es');
+const browserEn = path.join(__dirname, '../browser/en');
 
 // Production directories
 
-const browserEn = path.join(__dirname, 'dist/angular-ssr/browser/en');
-const browserEs = path.join(__dirname, 'dist/angular-ssr/browser/es');
+// const browserEn = path.join(__dirname, 'dist/angular-ssr/browser/en');
+// const browserEs = path.join(__dirname, 'dist/angular-ssr/browser/es');
 
 function run() {
 	const port = process.env.PORT || 4000;
