@@ -4,7 +4,7 @@ import { SecurityService } from '../../modules/security/services/security.servic
 import { LocalStorageService } from '../../modules/security/services/local-storage.service';
 import { LocalStorageKeysService } from '../../modules/security/services/local-storage-keys.service';
 import { isPlatformServer } from '@angular/common';
-import { IS_AUTHENTICATED } from '../../../server';
+// import { IS_AUTHENTICATED } from '../../../server';
 
 export const authGuard: CanActivateFn = (route, state) => {
     const router = inject(Router);
@@ -12,13 +12,13 @@ export const authGuard: CanActivateFn = (route, state) => {
     
     // Si estamos en SSR:
     if (isPlatformServer(platformId)) {
-        const isAuthenticated = inject(IS_AUTHENTICATED);
-        if (isAuthenticated) {
-            return true;
-        } else {
-            router.navigateByUrl('login');
-            return false;
-        }
+        // const isAuthenticated = inject(IS_AUTHENTICATED);
+        // if (isAuthenticated) {
+        //     return true;
+        // } else {
+        //     router.navigateByUrl('login');
+        //     return false;
+        // }
     }
 
     // Si estamos en CSR:
