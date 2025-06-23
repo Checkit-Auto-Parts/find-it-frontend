@@ -1,13 +1,14 @@
-
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr/node'; 
+import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
 import { basename, dirname, join, resolve } from 'node:path';
 import bootstrap from './main.server';
 import { LOCALE_ID } from '@angular/core';
 import { REQUEST, RESPONSE } from './express.tokens'
-import cookie from 'cookie';
+import * as cookie from 'cookie';
+import { jwtDecode } from "jwt-decode";
+import { USER_TOKEN } from './app/tokens/user-token';
 
 // export const IS_AUTHENTICATED = new InjectionToken<boolean>('IS_AUTHENTICATED');
 
@@ -48,35 +49,40 @@ export function app(): express.Express {
 	server.get('*', (req, res, next) => {
 		
 		const { protocol, originalUrl, headers } = req;
-		// 🔥 Parseamos las cookies del request
-		const cookies = cookie.parse(req.headers.cookie || '');
-		const token = cookies['token'];
+		try {
+			console.log('req: ', req.headers);
+			const cookies = cookie.parse(req.headers.cookie || '');
+			const token = cookies['token'];
 
-		// 🔒 Validamos si el usuario tiene token válido
-		let isAuthenticated = false;
-
-		if (token) {
-			try {
-				// Opcionalmente podrías verificar el token con tu clave secreta (si la tienes)
-				// const decoded = jwt.verify(token, 'your-secret-key');
-				isAuthenticated = true;
-			} catch (err) {
-				console.warn('Invalid token detected during SSR', err);
-				isAuthenticated = false;
+			if (token && isProbablyJWT(token)) {
+				try {
+					const decoded = jwtDecode(token);
+					(req as any).user = decoded;
+				} catch (err) {
+					// console.warn('Token presente pero inválido:', err);
+					(req as any).user = null;
+				}
+			} else {
+				// console.log('!token && isProbablyJWT(token)', req.headers.cookie);
+				(req as any).user = null;
 			}
+		} catch (error) {
+			console.error('Error al parsear cookies:', error);
+			(req as any).user = null;
 		}
+		// console.log('User from request:', (req as any).user);
 		commonEngine
 			.render({
 				bootstrap,
 				documentFilePath: indexHtml,
 				url: `${protocol}://${headers.host}${originalUrl}`,
-				publicPath: resolve(serverDistFolder, `../../browser/`), // publicPath does not need to concatenate the language.
+				publicPath: resolve(serverDistFolder, `../../browser/${lang}`), // publicPath does not need to concatenate the language.
 				providers: [
 					{ provide: APP_BASE_HREF, useValue: langPath },
 					{ provide: LOCALE_ID, useValue: lang },
 					{ provide: RESPONSE, useValue: res },
 					{ provide: REQUEST, useValue: req },
-					// { provide: IS_AUTHENTICATED, useValue: isAuthenticated } // 👈 ESTA ES LA CLAVE
+					{ provide: USER_TOKEN, useValue: (req as any).user ?? null },
 				],
 			})
 			.then((html: string) => {
@@ -87,6 +93,11 @@ export function app(): express.Express {
 	});
 
 	return server;
+}
+
+// Función auxiliar: verifica si la cadena parece un JWT (3 partes separadas por '.')
+function isProbablyJWT(token: string): boolean {
+	return typeof token === 'string' && token.split('.').length === 3;
 }
 
 /**
