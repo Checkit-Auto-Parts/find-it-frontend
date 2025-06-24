@@ -1,12 +1,12 @@
 <!-- @if(permissionParameters){ -->
-<mat-toolbar color="accent">
+<mat-toolbar color="primary">
 	<button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
 		<mat-icon>menu</mat-icon>
 	</button>
 	<div class="logo-container">
-		<img class="logo" src="assets/img/svg/logo.svg" alt="" />
+		<img class="logo" src="assets/img/svg/f01.svg" alt="" />
 	</div>
-	<h1 class="app-name">Equipos Rentados</h1>
+	<h1 class="app-name">Find It</h1>
 	<div class="ms-auto name-container">
 		<div class="lato-m black">{{ _user?.userName }}</div>
 		<div class="subtitle-m">{{ roleEnumString }} </div>
@@ -24,7 +24,7 @@
 					routerLinkActive="sidenav-item-active">
 					<span class="entry">
 						<mat-icon>home</mat-icon>
-						<span *ngIf="!isCollapsed">Home</span>
+						<span i18n="@@sidebar.home" *ngIf="!isCollapsed">Inicio</span>
 					</span>
 				</a>
 				<!-- } -->
@@ -104,7 +104,7 @@
 			<a mat-list-item (click)="logOut()">
 				<span class="entry">
 					<mat-icon>logout</mat-icon>
-					<span *ngIf="!isCollapsed">Logout</span>
+					<span i18n="@@sidebar.logout" *ngIf="!isCollapsed">Cerrar sesión</span>
 				</span>
 			</a>
 		</mat-nav-list>

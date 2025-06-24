@@ -2,7 +2,7 @@
     display: none;
 }
 .logo-container{
-    width: 5rem;
+    width: 4rem;
     margin-right: 0.2rem;
 }
 .name-container{
@@ -62,8 +62,8 @@ mat-sidenav-content {
 }
 
   .sidenav-item-active{
-    background-color: var(--green-disabled);
-    border-right: 4px solid var(--green);
+    background-color: var(--blue-gray);
+    border-right: 4px solid var(--blue-gray);
     border-radius: 0.25rem;
   }
 
