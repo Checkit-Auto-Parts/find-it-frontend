@@ -1,1 +1,117 @@
-<p>dashboard-main works!</p>
+<div class="container-fluid">
+    <div class="header-container">
+        <h1>Pedidos</h1>
+    </div>
+    <div class="filter-container">
+
+
+    </div>
+    <ng-container *ngIf="isMobile; else desktopView">
+        <!-- Vista móvil tipo card -->
+        <mat-card *ngFor="let pedido of pedidos" class="mobile-card">
+            <mat-card-title>{{ pedido.nombre }} {{ pedido.apellido }}</mat-card-title>
+            <mat-card-content>
+                <p><strong>Marca:</strong> {{ pedido.marcaVehiculo }}</p>
+                <p><strong>Modelo:</strong> {{ pedido.modelo }}</p>
+                <p><strong>Año:</strong> {{ pedido.anio }}</p>
+                <p><strong>Motor:</strong> {{ pedido.motor }}</p>
+                <p><strong>Repuesto:</strong> {{ pedido.repuesto }}</p>
+                <p><strong>Marca (Repuesto):</strong> {{ pedido.marcaRepuesto }}</p>
+                <p><strong>Garantía:</strong> {{ pedido.garantia }}</p>
+                <p><strong>Precio:</strong> {{ pedido.precio }}</p>
+                <p><strong>Descripción:</strong> {{ pedido.descripcion }}</p>
+                <p><strong>Foto:</strong></p>
+                <img [src]="pedido.foto" alt="Foto Repuesto" class="preview-img" />
+            </mat-card-content>
+        </mat-card>
+
+    </ng-container>
+    <div class="table-container">
+        <ng-template #desktopView>
+            <!-- Vista escritorio tipo tabla -->
+            <mat-table [dataSource]="pedidos" class="mat-elevation-z1 full-width-table">
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.nombre }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="apellido">
+                    <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.apellido }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="marcaVehiculo">
+                    <th mat-header-cell *matHeaderCellDef> Marca </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.marcaVehiculo }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="modelo">
+                    <th mat-header-cell *matHeaderCellDef> Modelo </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.modelo }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="anio">
+                    <th mat-header-cell *matHeaderCellDef> Año </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.anio }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="motor">
+                    <th mat-header-cell *matHeaderCellDef> Motor </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.motor }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="repuesto">
+                    <th mat-header-cell *matHeaderCellDef> Repuesto </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.repuesto }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="foto">
+                    <th mat-header-cell *matHeaderCellDef> Foto </th>
+                    <td mat-cell *matCellDef="let p">
+                        <img [src]="p.foto" alt="Foto" class="thumbnail-img" />
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="marcaRepuesto">
+                    <th mat-header-cell *matHeaderCellDef> Marca (Repuesto) </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.marcaRepuesto }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="garantia">
+                    <th mat-header-cell *matHeaderCellDef> Garantía </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.garantia }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="precio">
+                    <th mat-header-cell *matHeaderCellDef> Precio </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.precio }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descripcion">
+                    <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                    <td mat-cell *matCellDef="let p"> {{ p.descripcion }} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"
+                    [ngClass]="{ 'selected-row': row === selectedRow }" (click)="onRowClick(row)">
+                </tr>
+            </mat-table>
+        </ng-template>
+        <div *ngIf="totalRecords == 0" class="no-data">Sin datos</div>
+
+        <!-- #region Paginator y custom style -->
+        <mat-paginator [length]="totalRecords" [pageSize]="rowsPerPage" (page)="pageChanged($event)" class="d-none">
+        </mat-paginator>
+
+        <app-custom-paginator [totalRecords]="totalRecords" [currentPage]="currentPage"
+            [rowsPerPageList]="rowsPerPageList" [rowsPerPage]="rowsPerPage" (fetchList)="fetchList($event)"
+            (changeRowsNumber)="triggerPaginatorPageChangedEvent($event)" class="custom-paginator-style">
+        </app-custom-paginator>
+        <!-- #endregion -->
+    </div>
+</div>
