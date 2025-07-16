@@ -33,7 +33,7 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 // canActivate: [internalRoleGuard],
-                loadComponent: () => import('./modules/dashboard/dashboard-main/dashboard-main.component').then((c) => c.DashboardMainComponent)
+                loadComponent: () => import('./modules/dashboard/components/dashboard-main.component').then((c) => c.DashboardMainComponent)
             },
             {
                 path: 'Brand',
