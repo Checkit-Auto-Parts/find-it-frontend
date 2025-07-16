@@ -104,6 +104,30 @@
 					</context>
 				</context-group>
 			</trans-unit>
+			<trans-unit id="sidebar.home" datatype="html">
+				<source>Inicio</source>
+				<note from="description">Inicio</note>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/core/components/navbar/side-bar/side-bar.component.html
+					</context>
+					<context context-type="linenumber">
+						26
+					</context>
+				</context-group>
+			</trans-unit>
+			<trans-unit id="sidebar.logout" datatype="html">
+				<source>Cerrar sesión</source>
+				<note from="description">Cerrar sesión</note>
+				<context-group purpose="location">
+					<context context-type="sourcefile">
+						src/app/core/components/navbar/side-bar/side-bar.component.html
+					</context>
+					<context context-type="linenumber">
+						107
+					</context>
+				</context-group>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
