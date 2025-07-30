@@ -12,11 +12,12 @@ import { CustomPaginatorConfig } from '../../../core/models/other/custom-paginat
 import { DashboardServiceService } from '../services/dashboard.service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { OrderDTO } from '../models/order.dto';
+import { ExcludeDefaultDatePipe } from "../../../core/pipes/exclude-default-date.pipe";
 
 @Component({
     selector: 'app-dashboard-main',
     standalone: true,
-    imports: [NgClass, LayoutModule, MatCardModule, MaterialTableModule, NgIf, MatPaginator, MatSort, CustomPaginatorComponent],
+    imports: [NgClass, LayoutModule, MatCardModule, MaterialTableModule, NgIf, MatPaginator, MatSort, CustomPaginatorComponent, ExcludeDefaultDatePipe],
     templateUrl: './dashboard-main.component.html',
     styleUrl: './dashboard-main.component.css'
 })

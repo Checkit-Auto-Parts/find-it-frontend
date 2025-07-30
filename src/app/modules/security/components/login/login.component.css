@@ -6,24 +6,25 @@ div.login-container {
     height: 100vh;
     margin: 0;
     padding: 1em;
-    background-image: linear-gradient(
-        to bottom,
-        rgba(134, 134, 134, 0.7),
-        rgba(255, 255, 255, 0.7)
-      );
+    background-image: linear-gradient(to bottom,
+            rgba(134, 134, 134, 0.7),
+            rgba(255, 255, 255, 0.7));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
-  }
-  .login-logo {
+}
+
+.login-logo {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     width: 100%;
     height: 150px;
     border-radius: 1.25rem;
-    margin: 0 auto 2rem auto;}
+    margin: 0 auto 2rem auto;
+}
+
 mat-card {
     width: 100%;
     max-width: 448px;
@@ -33,6 +34,7 @@ mat-card {
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     background: var(--white, #ffff);
 }
+
 img {
     display: block;
     margin: 0 auto 3rem auto;
@@ -40,26 +42,30 @@ img {
     height: 95px;
     flex-shrink: 0;
 }
+
 mat-form-field {
     width: 100%;
 }
+
 button {
-    height: 48px!important;
+    height: 48px !important;
     flex-direction: column;
     justify-content: center;
     flex-shrink: 0;
-    padding-top: 0.4em;    
+    padding-top: 0.4em;
     width: 100%;
     border-radius: 50px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin: 2em auto 0 auto;
 }
-button:enabled{
-    background: var(--green)!important;
+
+button:enabled {
+    background: var(--green) !important;
     color: var(--white);
 }
-button:disabled{
-    background: var(--green-disabled)!important;
+
+button:disabled {
+    background: var(--green-disabled) !important;
     color: #13BBB1;
 }
 
@@ -69,6 +75,16 @@ button:disabled{
     bottom: 0;
     width: 100%;
     text-align: center;
-    font-size: 0.9rem;  
+    font-size: 0.9rem;
     padding: 0.4em 0;
-  }
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    background: white;
+    border-radius: 8px;
+    padding: 0.5rem;
+}

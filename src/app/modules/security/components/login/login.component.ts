@@ -36,8 +36,19 @@ export class LoginComponent {
 
 	private readonly _destroying$ = new Subject<void>();
 
+	private router = inject(Router);
+
+	public currentLang = this.detectLangFromUrl();
+
+	detectLangFromUrl(): 'en' | 'es' {
+		const url = this.router.url; // ✅ esto sí funciona tanto en SSR como CSR
+		if (url.startsWith('/es')) return 'es';
+		if (url.startsWith('/en')) return 'en';
+		return 'en'; // fallback por defecto
+	}
+
 	constructor(
-		private router: Router,
+		
 		private authService: SecurityService,
 		private formBuilder: FormBuilder,
 		private dialogMessageService: DialogMessageService,
@@ -147,5 +158,16 @@ export class LoginComponent {
 	onComplete() {
 		this.loginValid = false;
 		this.router.navigate(['/app/dashboard']);
+	}
+
+	onLangChange(event: any) {
+		// debugger;
+		// Cambia el idioma de la aplicación según la selección del usuario
+		console.log('Idioma seleccionado:', event.value);
+		const lang = (event.value as HTMLSelectElement).value as 'en' | 'es';
+		const currentUrl = this.router.url;
+		const newPath = currentUrl.replace(/^\/(en|es)/, '');
+		const newLangUrl = `/${lang}${newPath || ''}`;
+		this.router.navigateByUrl(newLangUrl);
 	}
 }

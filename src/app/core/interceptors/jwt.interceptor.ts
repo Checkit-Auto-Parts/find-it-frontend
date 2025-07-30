@@ -9,10 +9,11 @@ export const JwtInterceptor: HttpInterceptorFn = (req, next) => {
     return securityService.currentUser$.pipe(
         take(1),
         switchMap(user => {
-            if (!req.url.includes('dzenplusblob.blob') && user) {
+            if (user) {
                 req = req.clone({
                     setHeaders: {
                         Authorization: `Bearer ${user.token}`,
+                        'Accept-Language': 'es'
                     },
                 });
             }
