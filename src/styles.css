@@ -1,233 +1,279 @@
 html,
 body {
-  height: 100%;
+	height: 100%;
+	overflow: visible;
+	position: relative;
 }
+
 body {
-  margin: 0;
-  font-family: "lato", "Helvetica Neue", sans-serif;
+	margin: 0;
+	font-family: "lato", "Helvetica Neue", sans-serif;
 }
 
 /* #region textos */
 
 /* Estilos generales (por defecto, mobile first) */
 h1 {
-  font-family: var(--montserrat-b);
-  font-weight: bold;
-  font-size: 1.6em;
-  font-style: normal;
+	font-family: var(--montserrat-b);
+	font-weight: bold;
+	font-size: 1.6em;
+	font-style: normal;
 }
+
 h2 {
-  font-family: var(--montserrat-sb);
-  font-weight: 600;
-  font-size: 1em;
-  font-style: normal;
+	font-family: var(--montserrat-sb);
+	font-weight: 600;
+	font-size: 1em;
+	font-style: normal;
 }
+
 h3 {
-  font-family: var(--montserrat-m);
-  font-weight: 500;
-  font-size: 0.6em;
-  font-style: normal;
+	font-family: var(--montserrat-m);
+	font-weight: 500;
+	font-size: 0.6em;
+	font-style: normal;
 }
+
 .subtitle-m {
-  font-family: var(--montserrat-m);
-  font-weight: 500;
-  font-size: 0.5em !important;
-  font-style: normal;
-  line-height: normal;
-  text-align: end;
+	font-family: var(--montserrat-m);
+	font-weight: 500;
+	font-size: 0.5em !important;
+	font-style: normal;
+	line-height: normal;
+	text-align: end;
 }
+
 .lato-m {
-  font-family: var(--lato-r);
-  font-size: 0.6em;
+	font-family: var(--lato-r);
+	font-size: 0.6em;
 }
+
 .lato-s {
-  font-family: var(--lato-r);
-  font-size: 0.425em;
+	font-family: var(--lato-r);
+	font-size: 0.425em;
 }
+
 a {
-  font-family: var(--lato-m);
-  text-decoration: none;
+	font-family: var(--lato-m);
+	text-decoration: none;
 }
+
 .pointer {
-  font-family: var(--lato-m);
-  text-decoration: none;
-  cursor: pointer;
+	font-family: var(--lato-m);
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .mons-b {
-  font-family: var(--montserrat-b);
-  font-weight: bold;
-  font-size: 1.6em;
-  font-style: normal;
+	font-family: var(--montserrat-b);
+	font-weight: bold;
+	font-size: 1.6em;
+	font-style: normal;
 }
+
 /* #endregion texto */
 
 /* #region colors */
 .red {
-  color: var(--red);
+	color: var(--red);
 }
+
 .green {
-  color: var(--green);
+	color: var(--green);
 }
+
 .blue {
-  color: var(--blue);
+	color: var(--blue);
 }
+
 .neutro {
-  color: var(--neutro);
+	color: var(--neutro);
 }
+
 .black {
-  color: var(--black);
+	color: var(--black);
 }
+
 .white {
-  color: var(--white);
+	color: var(--white);
 }
+
 .bg-blue {
-  background-color: var(--blue);
+	background-color: var(--blue);
 }
+
 .bg-red {
-  background-color: var(--red);
+	background-color: var(--red);
 }
+
 .bg-green {
-  background-color: var(--green);
+	background-color: var(--green);
 }
+
 .bg-neutro {
-  background-color: var(--neutro);
+	background-color: var(--neutro);
 }
+
 .bg-white {
-  background-color: var(--white);
+	background-color: var(--white);
 }
+
 /* #endregion colors */
 
 /* #region Varios */
 .selector {
-  cursor: pointer;
+	cursor: pointer;
 }
+
 /* #endregion */
 
 /* #region form-field */
 .form-container {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 1em;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 1em;
 }
+
 .f-1 {
-  flex: 1 1 100%;
+	flex: 1 1 100%;
 }
+
 .f-2 {
-  flex: 1 1 48%;
+	flex: 1 1 48%;
 }
+
 .f-3 {
-  flex: 1 1 30%;
+	flex: 1 1 30%;
 }
+
 /* #endregion */
 
 /* #region DASHBOARD */
-.dashboard-container{
-  padding: 1em 2em;
+.dashboard-container {
+	padding: 1em 2em;
 }
 
 .container-cards {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); 
-  gap: 16px; 
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 16px;
 }
 
 .product-card {
-  width: 240px;
-  cursor: pointer;
+	width: 240px;
+	cursor: pointer;
 }
-.product-card mat-card-content{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.product-card mat-card-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-.product-card:hover{
-  background-color: var(--green-disabled);
+
+.product-card:hover {
+	background-color: var(--green-disabled);
 }
-.dashboard-container 
-.container-cards 
-mat-card 
-mat-card-content 
-p {
-  text-align: center;
+
+.dashboard-container .container-cards mat-card mat-card-content p {
+	text-align: center;
 }
+
 /* #endregion */
 
 /* #region Media queries */
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  h1 {
-    font-size: 1.8em;
-  }
-  h2 {
-    font-size: 1.2em;
-  }
-  h3 {
-    font-size: 0.8em;
-  }
-  .lato-m {
-    font-size: 0.8em;
-  }
-  .lato-s {
-    font-size: 0.625em;
-  }
-  .subtitle-m {
-    font-size: 0.8em !important;
-  }
-  .txt-bold {
-    font-size: 1.8em;
-  }
-  .txt-m {
-    font-size: 0.8em;
-  }
-  /* #region dashboard */
-  .container-cards  {
-    grid-template-columns: repeat(2, 1fr); 
-  }
-  /* #endregion */
+	h1 {
+		font-size: 1.8em;
+	}
+
+	h2 {
+		font-size: 1.2em;
+	}
+
+	h3 {
+		font-size: 0.8em;
+	}
+
+	.lato-m {
+		font-size: 0.8em;
+	}
+
+	.lato-s {
+		font-size: 0.625em;
+	}
+
+	.subtitle-m {
+		font-size: 0.8em !important;
+	}
+
+	.txt-bold {
+		font-size: 1.8em;
+	}
+
+	.txt-m {
+		font-size: 0.8em;
+	}
+
+	/* #region dashboard */
+	.container-cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	/* #endregion */
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  h1 {
-    font-size: 2em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-  h3 {
-    font-size: 1em;
-  }
-  .mons-bold {
-    font-size: 2em;
-  }
-  .txt-m {
-    font-size: 0.875em;
-  }
-  /* #region dashboard */
-  .container-cards  {
-    grid-template-columns: repeat(3, 1fr); 
-  }
-  /* #endregion */
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	h3 {
+		font-size: 1em;
+	}
+
+	.mons-bold {
+		font-size: 2em;
+	}
+
+	.txt-m {
+		font-size: 0.875em;
+	}
+
+	/* #region dashboard */
+	.container-cards {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* #endregion */
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  /* #region dashboard */
-  .container-cards  {
-    grid-template-columns: repeat(4, 1fr); 
-  }
-  /* #endregion */
+
+	/* #region dashboard */
+	.container-cards {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	/* #endregion */
 }
 
 /* XX-Large devices (extra large desktops, 1400px and up) */
 @media (min-width: 1400px) {
-  /* #region dashboard */
-  .container-cards  {
-    grid-template-columns: repeat(5, 1fr); 
-  }
-  /* #endregion */
+
+	/* #region dashboard */
+	.container-cards {
+		grid-template-columns: repeat(5, 1fr);
+	}
+
+	/* #endregion */
 }
 
 /* #endregion Media queries */

@@ -1,15 +1,18 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, Inject, PLATFORM_ID } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { SecurityService } from './modules/security/services/security.service';
 import { LocalStorageKeysService } from './modules/security/services/local-storage-keys.service';
 import { LocalStorageService } from './modules/security/services/local-storage.service';
 import { isPlatformBrowser } from '@angular/common';
 import { LoginResponseDTO } from './modules/security/models/user-login-response.dto';
 import { CoreModule } from './core/modules/core.module';
+import { MaterialNavbarModule } from './core/modules/material-navbar.module';
+import { MatInputModule } from "@angular/material/input";
+import { MaterialFormModule } from "./core/modules/material-form.module";
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, CoreModule],
+	imports: [RouterOutlet, CoreModule, MaterialNavbarModule, MatInputModule, MaterialFormModule],
 	templateUrl: './app.component.html',
 	styleUrl: './app.component.css'
 })
