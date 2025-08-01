@@ -18,11 +18,11 @@ export const routes: Routes = [
         title: 'Login - Find it all',
         component: LoginComponent,
     },
-    {
-        path: 'redirect/:url',
-        title: 'redirect',
-        component: RedirectComponent,
-    },
+    // {
+    //     path: 'redirect/:url',
+    //     title: 'redirect',
+    //     component: RedirectComponent,
+    // },
     {
         path: 'app',
         title: 'Find it all',
@@ -42,16 +42,16 @@ export const routes: Routes = [
             },
         ]
     },  
-    {
-        path: 'error',
-        component: PagesNavBarComponent,
-        children: [
-            {
-                path: '',
-                loadChildren: () => import('./core/components/error/error-pages.routes').then((r) => r.errorPagesRoutes),
-            },
-        ]
-    },
+    // {
+    //     path: 'error',
+    //     component: PagesNavBarComponent,
+    //     children: [
+    //         {
+    //             path: '',
+    //             loadChildren: () => import('./core/components/error/error-pages.routes').then((r) => r.errorPagesRoutes),
+    //         },
+    //     ]
+    // },
     {
         path: '**',
         pathMatch: 'full',
