@@ -177,6 +177,9 @@ export class LoginComponent {
 		const currentUrl = this.router.url;
 		const newPath = currentUrl.replace(/^\/(en|es)/, '');
 		const newLangUrl = `/${lang}${newPath || ''}`;
-		this.router.navigateByUrl(newLangUrl);
+		this.router.navigateByUrl(newLangUrl).then(() => {
+			// Actualiza el idioma preferido en el localStorage
+			// this.localStorageService.set(this.keysService.PREFERRED_LANG, lang);
+		});
 	}
 }
