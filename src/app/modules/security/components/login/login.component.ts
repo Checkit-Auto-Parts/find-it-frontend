@@ -13,16 +13,16 @@ import { LoginResponseDTO } from '../../models/user-login-response.dto';
 import { Meta, Title } from '@angular/platform-browser';
 import { StateExecution } from '../../../../core/models/normalized/stateExecution.model';
 @Component({
-  selector: 'app-login',
-  imports: [
-    CoreModule,
-    ReactiveFormsModule,
-    MaterialFormModule,
-    MatCardModule
-],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
-  standalone: true
+	selector: 'app-login',
+	imports: [
+		CoreModule,
+		ReactiveFormsModule,
+		MaterialFormModule,
+		MatCardModule
+	],
+	templateUrl: './login.component.html',
+	styleUrl: './login.component.css',
+	standalone: true
 })
 export class LoginComponent {
 	formLogin: FormGroup;
@@ -31,7 +31,7 @@ export class LoginComponent {
 	public password = '';
 	tokenExpiration: string = '';
 	private titleService = inject(Title);
-  	private metaService = inject(Meta);
+	private metaService = inject(Meta);
 
 
 	private readonly _destroying$ = new Subject<void>();
@@ -44,11 +44,11 @@ export class LoginComponent {
 		const url = this.router.url; // ✅ esto sí funciona tanto en SSR como CSR
 		if (url.startsWith('/es')) return 'es';
 		if (url.startsWith('/en')) return 'en';
-		return 'en'; // fallback por defecto
+		return 'es'; // fallback por defecto
 	}
 
 	constructor(
-		
+
 		private authService: SecurityService,
 		private formBuilder: FormBuilder,
 		private dialogMessageService: DialogMessageService,
@@ -65,18 +65,26 @@ export class LoginComponent {
 	}
 	async ngOnInit() {
 		const isSpanish = this.locale === 'es';
-
+		this.currentLang = isSpanish ? 'es' : 'en';
 		this.titleService.setTitle(
-		isSpanish ? 'Iniciar sesión | Find It' : 'Login | Find It'
+			isSpanish ? 'Iniciar sesión | Find It' : 'Login | Find It'
 		);
 
+		// let localstorage : string = "";
+		// localstorage = this.localStorageService.get(this.keysService.PREFERRED_LANG);
+
+		if ((this.currentLang  === 'es' || this.currentLang  === 'en')) {
+			// localStorage.setItem('preferredLang', this.currentLang );
+			this.localStorageService.set(this.keysService.PREFERRED_LANG, this.currentLang );
+		}
+
 		this.metaService.updateTag({
-		name: 'description',
-		content: isSpanish
-			? 'Página de inicio de sesión segura de Find It.'
-			: 'Secure login page for Find It.',
+			name: 'description',
+			content: isSpanish
+				? 'Página de inicio de sesión segura de Find It.'
+				: 'Secure login page for Find It.',
 		});
-		
+
 		var tokeActive = this.localStorageService.get(this.keysService.TOKEN_KEY);
 		if (tokeActive) {
 			this.router.navigate(['/app/dashboard']);
@@ -115,9 +123,9 @@ export class LoginComponent {
 	redirectByType() {
 		const redirectUrl = this.localStorageService.get(this.keysService.URL_REDIRECT);
 		if (redirectUrl) {
-		this.router.navigateByUrl(redirectUrl.toString());
+			this.router.navigateByUrl(redirectUrl.toString());
 		} else {
-		this.router.navigate(['/app/dashboard']);
+			this.router.navigate(['/app/dashboard']);
 		}
 	}
 
@@ -164,7 +172,8 @@ export class LoginComponent {
 		// debugger;
 		// Cambia el idioma de la aplicación según la selección del usuario
 		console.log('Idioma seleccionado:', event.value);
-		const lang = (event.value as HTMLSelectElement).value as 'en' | 'es';
+		// const lang = (event.value as HTMLSelectElement).value as 'en' | 'es';
+		const lang = event.value;
 		const currentUrl = this.router.url;
 		const newPath = currentUrl.replace(/^\/(en|es)/, '');
 		const newLangUrl = `/${lang}${newPath || ''}`;

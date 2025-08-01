@@ -15,4 +15,6 @@ export class LocalStorageKeysService {
     public REQUESTDETAILIDSLIST: string = 'requestDetailIdsList';
 
     public URL_REDIRECT: string = 'url_redirect';
+
+    public PREFERRED_LANG: string = 'preferredLang';
 }   
