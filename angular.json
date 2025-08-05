@@ -82,14 +82,10 @@
 						},
 						"production-es": {
 							"localize": ["es"],
-							"baseHref": "/es/",
-							"deployUrl": "/es/",
 							"optimization": true
 						},
 						"production-en": {
 							"localize": ["en"],
-							"baseHref": "/en/",
-							"deployUrl": "/en/",
 							"optimization": true
 						},
 						"development": {
