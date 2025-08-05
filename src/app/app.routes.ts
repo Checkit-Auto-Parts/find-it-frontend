@@ -9,52 +9,36 @@ import { RedirectComponent } from './modules/security/components/redirect/redire
 
 export const routes: Routes = [
     {
-        path: 'login',
-        title: 'Login - Find it all',
-        component: LoginComponent,
-    },
-    {
         path: '',
-        title: 'Login - Find it all',
-        component: LoginComponent,
+        redirectTo: '/es/login',
+        pathMatch: 'full',
     },
-    // {
-    //     path: 'redirect/:url',
-    //     title: 'redirect',
-    //     component: RedirectComponent,
-    // },
     {
-        path: 'app',
-        title: 'Find it all',
-        // pathMatch: 'full',
-        component: SideBarComponent,
-        canActivate: [authGuard],
+        path: ':lang',
         children: [
             {
-                path: 'dashboard',
-                // canActivate: [internalRoleGuard],
-                loadComponent: () => import('./modules/dashboard/components/dashboard-main.component').then((c) => c.DashboardMainComponent)
+                path: '',
+                component: LoginComponent,
             },
             {
-                path: 'Brand',
-                // canActivate: [internalRoleGuard],
-                loadComponent: () => import('./modules/brand/brand.component').then((c) => c.BrandComponent)
+                path: 'login',
+                component: LoginComponent,
             },
+            {
+                path: 'app',
+                component: SideBarComponent,
+                canActivate: [authGuard],
+                children: [
+                    {
+                        path: 'dashboard',
+                        loadComponent: () => import('./modules/dashboard/components/dashboard-main.component').then((m) => m.DashboardMainComponent),
+                    },
+                ]
+            },
+            {
+                path: '**',
+                redirectTo: 'login'
+            }
         ]
-    },  
-    // {
-    //     path: 'error',
-    //     component: PagesNavBarComponent,
-    //     children: [
-    //         {
-    //             path: '',
-    //             loadChildren: () => import('./core/components/error/error-pages.routes').then((r) => r.errorPagesRoutes),
-    //         },
-    //     ]
-    // },
-    {
-        path: '**',
-        pathMatch: 'full',
-        redirectTo: 'error'
-    }, 
+    }
 ];

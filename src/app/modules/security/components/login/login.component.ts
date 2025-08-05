@@ -64,6 +64,7 @@ export class LoginComponent {
 		});
 	}
 	async ngOnInit() {
+		// debugger;
 		const isSpanish = this.locale === 'es';
 		this.currentLang = isSpanish ? 'es' : 'en';
 		this.titleService.setTitle(
@@ -171,15 +172,19 @@ export class LoginComponent {
 	onLangChange(event: any) {
 		// debugger;
 		// Cambia el idioma de la aplicación según la selección del usuario
-		console.log('Idioma seleccionado:', event.value);
+		
 		// const lang = (event.value as HTMLSelectElement).value as 'en' | 'es';
 		const lang = event.value;
 		const currentUrl = this.router.url;
 		const newPath = currentUrl.replace(/^\/(en|es)/, '');
-		const newLangUrl = `/${lang}${newPath || ''}`;
-		this.router.navigateByUrl(newLangUrl).then(() => {
+		const newLangUrl = `/${lang}${newPath || '/'}`; 
+		console.log('newLangUrl', newLangUrl);
+		// this.router.resul; // Recarga la aplicación para aplicar el nuevo idioma
+		this.router.navigateByUrl(newLangUrl).then((s) => {
+			
 			// Actualiza el idioma preferido en el localStorage
-			// this.localStorageService.set(this.keysService.PREFERRED_LANG, lang);
+			this.localStorageService.set(this.keysService.PREFERRED_LANG, lang);
+			window.location.href = newLangUrl;
 		});
 	}
 }

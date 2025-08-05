@@ -96,8 +96,7 @@
 							"optimization": false,
 							"sourceMap": true,
 							"extractLicenses": false,
-							"localize": ["es"],
-							"baseHref": "/es/"
+							"localize": ["es"]
 						}
 					},
 					"defaultConfiguration": "production"
