@@ -15,6 +15,7 @@ import { PhoneTypeDto, UserRegisterDTO } from '../models/user-register.dto';
 import { RegisterResponseDto } from '../models/user-register-response.dto';
 import { ChangePasswordDTO, ResetPasswordDTO } from '../models/user.reset-password.dto';
 import { StateExecution } from '../../../core/models/normalized/stateExecution.model';
+import { LangRouterService } from '../../../core/services/lang-router.service';
 // import { MsalService } from '@azure/msal-angular';
 
 @Injectable({
@@ -38,7 +39,8 @@ export class SecurityService {
 		private router: Router,
 		private localStorageService: LocalStorageService,
 		private keysService: LocalStorageKeysService,
-		private cryptoService: CryptoService
+		private cryptoService: CryptoService,
+		private langService: LangRouterService
 		// private msalService:MsalService
 
 	) {
@@ -70,26 +72,26 @@ export class SecurityService {
 	}
 
 	logout() {
-		this.router.navigate(['/login']).then(() => {
-			//!IMPORTANTE: revisitar y replantear esta forma de setear si esta logeado o no
-			this._authSub$.next(false);
-			this.token = null;
-			localStorage.removeItem('user');
-			localStorage.removeItem('token');
-			localStorage.removeItem('operatorId');
-			localStorage.removeItem(this.keysService.USER_PERMISSIONS);
-			this.localStorageService.set('logout', Date.now().toString());
-			// this.msalService.instance.initialize();
-			// let accExist = this.msalService.instance.getAllAccounts().length > 0;
-			// if (accExist) {
-			//   this.logoutMsal();
-			// }
+		this._authSub$.next(false);
+		this.token = null;
+		localStorage.removeItem('user');
+		localStorage.removeItem('token');
+		localStorage.removeItem('operatorId');
+		localStorage.removeItem(this.keysService.USER_PERMISSIONS);
+		localStorage.removeItem(this.keysService.PREFERRED_LANG);
+		this.localStorageService.set('logout', Date.now().toString());
+		// this.msalService.instance.initialize();
+		// let accExist = this.msalService.instance.getAllAccounts().length > 0;
+		// if (accExist) {
+		//   this.logoutMsal();
+		// }
 
-			// Eliminar el token de la cookie
-			document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-			window.location.reload();
-		});
-	}
+		// Eliminar el token de la cookie
+		document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+		// window.location.reload();
+		
+		this.langService.navigate(['app', 'login']);
+	}	
 
 	setCurrentUser(user: any) {
 		// user.roles = [];
