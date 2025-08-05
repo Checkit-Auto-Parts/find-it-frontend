@@ -12,6 +12,7 @@ import { DialogMessageService } from '../../../../core/services/dialog-message.s
 import { LoginResponseDTO } from '../../models/user-login-response.dto';
 import { Meta, Title } from '@angular/platform-browser';
 import { StateExecution } from '../../../../core/models/normalized/stateExecution.model';
+import { LangRouterService } from '../../../../core/services/lang-router.service';
 @Component({
 	selector: 'app-login',
 	imports: [
@@ -54,7 +55,8 @@ export class LoginComponent {
 		private dialogMessageService: DialogMessageService,
 		private localStorageService: LocalStorageService,
 		private keysService: LocalStorageKeysService,
-		@Inject(LOCALE_ID) private locale: string
+		@Inject(LOCALE_ID) private locale: string,
+		private langRouter: LangRouterService
 		// private msalBroadcastService: MsalBroadcastService,
 		// private authMService: MsalService,
 	) {
@@ -73,7 +75,7 @@ export class LoginComponent {
 
 		// let localstorage : string = "";
 		// localstorage = this.localStorageService.get(this.keysService.PREFERRED_LANG);
-
+		debugger;
 		if ((this.currentLang  === 'es' || this.currentLang  === 'en')) {
 			// localStorage.setItem('preferredLang', this.currentLang );
 			this.localStorageService.set(this.keysService.PREFERRED_LANG, this.currentLang );
@@ -126,7 +128,8 @@ export class LoginComponent {
 		if (redirectUrl) {
 			this.router.navigateByUrl(redirectUrl.toString());
 		} else {
-			this.router.navigate(['/app/dashboard']);
+			// this.router.navigate(['/app/dashboard']);
+			this.langRouter.navigate(['app', 'dashboard']);
 		}
 	}
 
@@ -183,6 +186,7 @@ export class LoginComponent {
 		this.router.navigateByUrl(newLangUrl).then((s) => {
 			
 			// Actualiza el idioma preferido en el localStorage
+			// debugger;
 			this.localStorageService.set(this.keysService.PREFERRED_LANG, lang);
 			window.location.href = newLangUrl;
 		});
