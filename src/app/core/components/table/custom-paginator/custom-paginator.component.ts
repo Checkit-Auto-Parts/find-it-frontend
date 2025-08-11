@@ -48,17 +48,18 @@ export class CustomPaginatorComponent implements OnInit {
 			this.currentPage--;
 
 			this.fetchList.emit({
-				recargar: true,
+				reload: true,
 				currentPage: this.currentPage,
 				rowsPerPage: this.rowsPerPage,
 			});
 		}
 	}
 	goToNextPage() {
+		debugger;
 		if ((this.currentPage + 1) * this.rowsPerPage < this.totalRecords) {
 			this.currentPage++;
 			this.fetchList.emit({
-				recargar: true,
+				reload: true,
 				currentPage: this.currentPage,
 				rowsPerPage: this.rowsPerPage,
 			});

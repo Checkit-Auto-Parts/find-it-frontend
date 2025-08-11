@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
 import { USER_TOKEN } from '../../../tokens/user-token';
 import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
@@ -21,7 +21,7 @@ import { ExcludeDefaultDatePipe } from "../../../core/pipes/exclude-default-date
     templateUrl: './dashboard-main.component.html',
     styleUrl: './dashboard-main.component.css'
 })
-export class DashboardMainComponent implements OnInit {
+export class DashboardMainComponent implements OnInit, AfterViewInit {
     isMobile = false;
     filter = '';
     dataSource = new MatTableDataSource<any>();
@@ -59,20 +59,19 @@ export class DashboardMainComponent implements OnInit {
         'Año',
         'Foto',
 
-        'Creado',
-        'Creado Por',
-        'Modificado',
-        'Modificado Por',
+        
         'Activo',
         'Acciones'
     ];
 
+    // Paginator
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
     totalRecords = 0;
     currentPage = 0;
     rowsPerPageList: number[] = [5, 10, 25];
     rowsPerPage = 10;
+    //End Paginator
 
     selectedRow: any;
     constructor(
@@ -85,20 +84,15 @@ export class DashboardMainComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        /*
-        this.dataSource.data = this.pedidos;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-
-        // Initialize paginator
-        this.paginator.pageSize = this.rowsPerPage;
-        this.paginator.pageSizeOptions = this.rowsPerPageList;
-        */
         this.fetchPaginatedList();
     }
 
-    fetchPaginatedList(
-    ) {
+    ngAfterViewInit():void {
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+    }
+
+    fetchPaginatedList() {
         this.dashboardService.getPaginatedList(this.currentPage + 1, this.rowsPerPage, '').subscribe({
             next: (result) => {
                 this.totalRecords = result.data?.totalRecords!;
@@ -106,7 +100,6 @@ export class DashboardMainComponent implements OnInit {
 
                 this.paginator.length = this.totalRecords;
                 this.paginator.pageIndex = this.currentPage;
-                console.log('Fetched data:', this.dataSource.data);
             },
             error: (error) => {
                 console.error('Error fetching data:', error);
@@ -116,11 +109,13 @@ export class DashboardMainComponent implements OnInit {
     onRowClick(row: any) {
         this.selectedRow = row;
     }
-    triggerPaginatorPageChangedEvent(numero: number) {
-        this.paginator._changePageSize(numero);
+
+    // Paginator methods
+    triggerPaginatorPageChangedEvent(number: number) {
+        this.paginator._changePageSize(number);
     }
     fetchList(paginatorConfig: CustomPaginatorConfig) {
-        if (paginatorConfig.recargar) {
+        if (paginatorConfig.reload) {
             this.currentPage = paginatorConfig.currentPage!;
             this.rowsPerPage = paginatorConfig.rowsPerPage!;
             this.fetchPaginatedList();
@@ -131,6 +126,7 @@ export class DashboardMainComponent implements OnInit {
         this.rowsPerPage = event.pageSize;
         this.fetchPaginatedList();
     }
+    // End Paginator methods
 
     update(entity: OrderDTO) {
         this.openDialogEquipment(entity);

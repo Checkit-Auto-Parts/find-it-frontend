@@ -87,7 +87,7 @@
                 </td>
             </ng-container>
 
-            <ng-container matColumnDef="Creado">
+            <!-- <ng-container matColumnDef="Creado">
                 <th mat-header-cell *matHeaderCellDef> Creado </th>
                 <td mat-cell *matCellDef="let p"> {{ p.createdAt | excludeDefaultDate }} </td>
             </ng-container>
@@ -105,7 +105,7 @@
             <ng-container matColumnDef="Modificado Por">
                 <th mat-header-cell *matHeaderCellDef> Modificado Por </th>
                 <td mat-cell *matCellDef="let p"> {{ p.modifiedBy }} </td>
-            </ng-container>
+            </ng-container> -->
 
             <ng-container matColumnDef="Activo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Activo</th>
@@ -149,12 +149,21 @@
     </div>
     <div *ngIf="totalRecords == 0" class="no-data">Sin datos</div>
     <!-- #region Paginator y custom style -->
-    <mat-paginator [length]="totalRecords" [pageSize]="rowsPerPage" (page)="pageChanged($event)" class="d-none">
+    <mat-paginator 
+        [length]="totalRecords" 
+        [pageSize]="rowsPerPage" 
+        (page)="pageChanged($event)" 
+        class="d-none">
     </mat-paginator>
 
-    <app-custom-paginator [totalRecords]="totalRecords" [currentPage]="currentPage" [rowsPerPageList]="rowsPerPageList"
-        [rowsPerPage]="rowsPerPage" (fetchList)="fetchList($event)"
-        (changeRowsNumber)="triggerPaginatorPageChangedEvent($event)" class="custom-paginator-style">
+    <app-custom-paginator 
+        [totalRecords]="totalRecords" 
+        [currentPage]="currentPage" 
+        [rowsPerPageList]="rowsPerPageList"
+        [rowsPerPage]="rowsPerPage" 
+        (fetchList)="fetchList($event)"
+        (changeRowsNumber)="triggerPaginatorPageChangedEvent($event)" 
+        class="custom-paginator-style">
     </app-custom-paginator>
     <!-- #endregion -->
 </div>
