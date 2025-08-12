@@ -25,7 +25,8 @@ export class DashboardServiceService {
         return this.http.get<StateExecution<PaginatedListDTO<OrderDTO>>>(`${this.apiUrl}/GetAllPaginated`, { params: httpParams });
     }
 
-    changeIsActiveState(id: number, stateIsActive: boolean) {
-        return this.http.put<StateExecution<null>>(`${this.apiUrl}/IsAllow/${id}`, { id: id, isActive: stateIsActive });
+    changeIsActiveState(id: number, isAllow: boolean) {
+        console.log('changeIsActiveState', id, isAllow);
+        return this.http.put<StateExecution<null>>(`${this.apiUrl}/IsAllow/${id}`, { id: id, isAllow: isAllow });
     }
 }
