@@ -1,3 +1,4 @@
+import { DialogMessageService } from './../../../core/services/dialog-message.service';
 import { AfterViewInit, Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
 import { USER_TOKEN } from '../../../tokens/user-token';
 import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
@@ -13,6 +14,7 @@ import { DashboardServiceService } from '../services/dashboard.service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { OrderDTO } from '../models/order.dto';
 import { ExcludeDefaultDatePipe } from "../../../core/pipes/exclude-default-date.pipe";
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-dashboard-main',
@@ -75,8 +77,10 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
 
     selectedRow: any;
     constructor(
-        private breakpointObserver: BreakpointObserver
-        , private dashboardService: DashboardServiceService
+      private breakpointObserver: BreakpointObserver
+    , private dashboardService: DashboardServiceService
+    , private dialog: MatDialog
+    , private dialogMessageService: DialogMessageService
     ) {
         this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
             this.isMobile = result.matches;
@@ -133,8 +137,8 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
     }
 
     openDialogEquipment(entity: OrderDTO): void {
-        /*
-        this.dialog.open(EquipmentSupplierCreateComponent, {
+        
+        /*this.dialog.open(EquipmentSupplierCreateComponent, {
             maxWidth: '640px',
             height: 'auto',
             data: entity,
@@ -144,18 +148,17 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
                     this.fetchPaginatedList();
                 }
             });
-            */
+         */   
     }
 
     changeIsActiveState(entity: OrderDTO) {
-        /*
         this.dialogMessageService
             .showDecisionDialog('¿Está seguro de que desea cambiar el estado a este equipamiento?')
             .afterClosed()
             .subscribe((response: boolean) => {
                 if (response) {
                     if (response == true) {
-                        this.equipmentService.changeIsActiveState(entity.id!, !entity.isActive).subscribe({
+                        this.dashboardService.changeIsActiveState(entity.id!, !entity.isAllow).subscribe({
                             next: response => {
                                 if (response.status) {
                                     this.dialogMessageService.showSuccessDialog(response.message.description);
@@ -171,7 +174,7 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
                     }
                 }
             });
-            */
+            
     }
 
     delete(entity: OrderDTO) {
