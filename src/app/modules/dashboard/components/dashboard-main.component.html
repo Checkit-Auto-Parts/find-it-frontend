@@ -124,7 +124,7 @@
                 <td mat-cell *matCellDef="let element">
                     <div class="justify">
 
-                        <mat-icon fontIcon="edit" class="selector" title="Editar chofer" (click)="update(element)">
+                        <mat-icon fontIcon="edit" class="selector" title="Editar orden" (click)="update(element)">
                         </mat-icon>
 
 
@@ -134,7 +134,7 @@
 
 
                         <mat-icon *ngIf="!element.isDeleted" fontIcon="delete" class="selector red"
-                            title="Eliminar chofer" (click)="delete(element)">
+                            title="Eliminar orden" (click)="delete(element)">
                         </mat-icon>
 
                     </div>
