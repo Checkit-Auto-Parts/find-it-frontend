@@ -1,0 +1,10 @@
+.footer-toolbar {
+  justify-content: center;          /* Centrar contenido horizontalmente */
+  padding: 8px 16px;               /* Espaciado interno para comodidad */
+  font-size: 14px;                 /* Tamaño de fuente legible */
+}
+
+.footer-text {
+  text-align: center;             /* Centrar texto dentro del span */
+  width: 100%;
+}

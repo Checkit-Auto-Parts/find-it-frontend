@@ -152,10 +152,12 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
     }
 
     changeIsActiveState(entity: OrderDTO) {
+        console.log('changeIsActiveState', entity);
         this.dialogMessageService
             .showDecisionDialog('¿Está seguro de que desea cambiar el estado a este equipamiento?')
             .afterClosed()
             .subscribe((response: boolean) => {
+                console.log('response', response);
                 if (response) {
                     if (response == true) {
                         this.dashboardService.changeIsActiveState(entity.id!, !entity.isAllow).subscribe({
