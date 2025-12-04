@@ -13,13 +13,15 @@ import { LoginResponseDTO } from '../../models/user-login-response.dto';
 import { Meta, Title } from '@angular/platform-browser';
 import { StateExecution } from '../../../../core/models/normalized/stateExecution.model';
 import { LangRouterService } from '../../../../core/services/lang-router.service';
+import { FooterComponent } from '../../../../core/components/footer/footer.component';
 @Component({
 	selector: 'app-login',
 	imports: [
 		CoreModule,
 		ReactiveFormsModule,
 		MaterialFormModule,
-		MatCardModule
+		MatCardModule,
+		FooterComponent
 	],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.css',
