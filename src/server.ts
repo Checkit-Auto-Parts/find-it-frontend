@@ -50,7 +50,6 @@ export function app(): express.Express {
 		
 		const { protocol, originalUrl, headers } = req;
 		try {
-			console.log('req: ', req.headers);
 			const cookies = cookie.parse(req.headers.cookie || '');
 			const token = cookies['token'];
 
