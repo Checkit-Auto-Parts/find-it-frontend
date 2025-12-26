@@ -1,403 +1,279 @@
-<!doctype html>
-<html lang="es" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#204F9F" />
-    <title>Política de Privacidad | Find It</title>
+<header>
+	<div class="header-inner">
+		<div class="brand">
+			<div class="brand-mark" aria-hidden="true">📍</div>
+			<div class="brand-title">
+				<strong>Find It</strong>
+				<span>Política de Privacidad</span>
+			</div>
+		</div>
 
-    <style>
-      :root{
-        --fi-primary:#204F9F;
-        --fi-primary-700:#183D7C;
-        --fi-primary-800:#12315F;
-        --fi-accent:#2D7FF9;
-        --fi-bg:#F5F7FB;
-        --fi-surface:#FFFFFF;
-        --fi-border:rgba(17,24,39,.10);
-        --fi-text:#111827;
-        --fi-muted:#6B7280;
-        --fi-link:#204F9F;
-        --fi-radius:14px;
-        --fi-shadow:0 10px 30px rgba(17,24,39,.10);
-        --fi-max:980px;
-        --fi-font:system-ui,-apple-system,"Segoe UI",Roboto,Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
-      }
+		<a class="btn" routerLink="/es/login">Volver a Iniciar sesión</a>
+	</div>
+</header>
 
-      *{box-sizing:border-box}
-      html,body{height:100%}
-      body{
-        margin:0;
-        font-family:var(--fi-font);
-        color:var(--fi-text);
-        background:
-          radial-gradient(1100px 500px at 10% -10%, rgba(32,79,159,.14), transparent 60%),
-          radial-gradient(900px 450px at 90% 0%, rgba(45,127,249,.10), transparent 55%),
-          var(--fi-bg);
-      }
+<main>
+	<div class="page">
+		<section class="hero">
+			<h1>Política de Privacidad</h1>
+			<p><strong>Última actualización:</strong> 26 de diciembre de 2025</p>
+		</section>
 
-      a{color:var(--fi-link); text-decoration:none}
-      a:hover{text-decoration:underline}
+		<section class="content">
+			<article>
+				<p>
+					Esta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso
+					y divulgación de su
+					información cuando usted usa el Servicio, y le informa sobre sus derechos de privacidad y cómo la
+					ley lo protege.
+				</p>
 
-      header{
-        position:sticky; top:0; z-index:10;
-        background:linear-gradient(90deg, var(--fi-primary), var(--fi-primary-700));
-        color:#fff;
-        border-bottom:1px solid rgba(255,255,255,.14);
-      }
-      .header-inner{
-        max-width:var(--fi-max);
-        margin:0 auto;
-        padding:14px 18px;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:14px;
-      }
-      .brand{
-        display:flex;
-        align-items:center;
-        gap:12px;
-        min-width:0;
-      }
-      .brand-mark{
-        width:40px; height:40px;
-        border-radius:12px;
-        background:rgba(255,255,255,.16);
-        display:flex; align-items:center; justify-content:center;
-        box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);
-      }
-      .brand-title{
-        display:flex;
-        flex-direction:column;
-        line-height:1.1;
-        min-width:0;
-      }
-      .brand-title strong{
-        font-size:16px;
-        letter-spacing:.2px;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-      }
-      .brand-title span{
-        font-size:12px;
-        opacity:.86;
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis;
-      }
-      .top-actions{
-        display:flex;
-        align-items:center;
-        gap:10px;
-        flex-wrap:wrap;
-        justify-content:flex-end;
-      }
-      .chip{
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        padding:8px 10px;
-        border-radius:999px;
-        background:rgba(255,255,255,.14);
-        box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);
-        font-size:12px;
-        white-space:nowrap;
-      }
-      .btn{
-        appearance:none;
-        border:0;
-        cursor:pointer;
-        padding:10px 12px;
-        border-radius:12px;
-        font-weight:600;
-        font-size:13px;
-        color:var(--fi-primary-800);
-        background:#fff;
-        box-shadow:0 6px 18px rgba(0,0,0,.14);
-      }
-      .btn:hover{filter:brightness(.98)}
-      .btn:active{transform:translateY(1px)}
+				<p>
+					Usamos sus datos personales para proporcionar y mejorar el Servicio. Al usar el Servicio, acepta la
+					recopilación y el uso
+					de información de acuerdo con esta Política de Privacidad.
+				</p>
 
-      main{
-        max-width:var(--fi-max);
-        margin:0 auto;
-        padding:22px 18px 36px;
-      }
+				<h2>Interpretación y Definiciones</h2>
 
-      .page{
-        background:var(--fi-surface);
-        border:1px solid var(--fi-border);
-        border-radius:var(--fi-radius);
-        box-shadow:var(--fi-shadow);
-        overflow:hidden;
-      }
+				<h3>Interpretación</h3>
+				<p>
+					Las palabras cuyos primeros caracteres están en mayúscula tienen significados definidos bajo las
+					siguientes condiciones.
+					Estas definiciones tienen el mismo significado sin importar si aparecen en singular o plural.
+					
+				</p>
 
-      .hero{
-        padding:22px 22px 18px;
-        border-bottom:1px solid var(--fi-border);
-        background:
-          linear-gradient(180deg, rgba(32,79,159,.06), transparent 60%),
-          #fff;
-      }
-      .hero h1{
-        margin:0 0 6px;
-        font-size:24px;
-        letter-spacing:.2px;
-      }
-      .hero p{
-        margin:0;
-        color:var(--fi-muted);
-        font-size:13px;
-      }
+				<h3>Definiciones</h3>
+				<p>A efectos de esta Política de Privacidad:</p>
 
-      .content{
-        padding:18px 22px 10px;
-      }
+				<ul>
+					<li>
+						<strong>Cuenta</strong> significa una cuenta única creada para usted para acceder a nuestro
+						Servicio o a partes de nuestro Servicio.
+					</li>
+					<li>
+						<strong>Afiliado</strong> significa una entidad que controla, es controlada por o está bajo
+						control común con una parte.
+					</li>
+					<li>
+						<strong>Compañía</strong> (denominada como “la Compañía”, “Nosotros”, “Nos” o “Nuestro” en este
+						Acuerdo) se refiere a
+						<strong>Find It LLC</strong>, Caracas, Venezuela.
+					</li>
+					<li>
+						<strong>Cookies</strong> son pequeños archivos colocados en su computadora, dispositivo móvil u
+						otro dispositivo por un sitio web,
+						que contienen detalles de su historial de navegación.
+					</li>
+					<li><strong>País</strong> se refiere a: Venezuela.</li>
+					<li>
+						<strong>Dispositivo</strong> significa cualquier dispositivo que pueda acceder al Servicio como
+						una computadora, celular o tablet.
+					</li>
+					<li>
+						<strong>Datos Personales</strong> es cualquier información que se relaciona con una persona
+						identificada o identificable.
+					</li>
+					<li><strong>Servicio</strong> se refiere al Sitio web.</li>
+					<li>
+						<strong>Proveedor del Servicio</strong> significa cualquier persona natural o jurídica que
+						procesa datos en nombre de la Compañía.
+					</li>
+					<li>
+						<strong>Datos de Uso</strong> se refiere a datos recopilados automáticamente al usar el
+						Servicio.
+					</li>
+					<li>
+						<strong>Sitio Web</strong> se refiere a <strong>FindIt</strong>, accesible desde
+						<strong>https://findit-store.com/es/login</strong>.
+					</li>
+					<li><strong>Usted</strong> significa la persona que accede o usa el Servicio.</li>
+				</ul>
 
-      article{
-        line-height:1.65;
-        font-size:14px;
-      }
-      article h2{
-        margin:18px 0 8px;
-        font-size:18px;
-        letter-spacing:.2px;
-      }
-      article h3{
-        margin:14px 0 6px;
-        font-size:15px;
-      }
-      article p{
-        margin:8px 0;
-        color:rgba(17,24,39,.92);
-      }
-      article ul{
-        margin:8px 0 12px 18px;
-        padding:0;
-      }
-      article li{
-        margin:6px 0;
-      }
+				<p>
+					
+				</p>
 
-      .note{
-        margin:14px 0 0;
-        padding:12px 14px;
-        border-radius:12px;
-        border:1px solid rgba(32,79,159,.18);
-        background:rgba(32,79,159,.06);
-        color:rgba(17,24,39,.90);
-        font-size:13px;
-      }
+				<h2>Recopilación y Uso de Sus Datos Personales</h2>
 
-      footer{
-        margin-top:16px;
-        color:var(--fi-muted);
-        font-size:12px;
-        text-align:center;
-      }
+				<h3>Tipos de Datos Recopilados</h3>
 
-      @media (max-width:520px){
-        .hero h1{font-size:20px}
-        .btn{width:100%}
-        .top-actions{width:100%}
-      }
-    </style>
-  </head>
+				<h3>Datos Personales</h3>
+				<p>
+					Mientras usa nuestro Servicio, podemos pedirle que nos proporcione cierta información de
+					identificación personal que puede
+					usarse para contactarlo o identificarlo. Esto puede incluir, pero no está limitado a:
+				</p>
+				<ul>
+					<li>Dirección de correo electrónico</li>
+					<li>Nombre y apellido</li>
+					<li>Número de teléfono</li>
+					<li>Dirección, Estado, Provincia, código postal, Ciudad</li>
+					<li>Datos de Uso</li>
+				</ul>
 
-  <body>
-    <header role="banner" aria-label="Encabezado principal">
-      <div class="header-inner">
-        <div class="brand" aria-label="Marca Find It">
-          <div class="brand-mark" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" role="img" aria-label="Ícono">
-              <path d="M12 2.5c4.97 0 9 3.62 9 8.08 0 4.8-5.2 9.94-8.06 12.33a1.5 1.5 0 0 1-1.88 0C8.2 20.52 3 15.38 3 10.58 3 6.12 7.03 2.5 12 2.5Z" fill="rgba(255,255,255,.92)"/>
-              <path d="M12 7.2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Z" fill="rgba(32,79,159,.85)"/>
-            </svg>
-          </div>
-          <div class="brand-title">
-            <strong>Find It</strong>
-            <span>Política de Privacidad</span>
-          </div>
-        </div>
+				<p>
+					
+				</p>
 
-        <div class="top-actions" aria-label="Acciones">
-          <span class="chip" aria-label="Idioma">
-            <span aria-hidden="true">🌐</span>
-            <span>Español</span>
-          </span>
-          <a class="btn" href="/es/login" aria-label="Volver a iniciar sesión">Volver a Iniciar sesión</a>
-        </div>
-      </div>
-    </header>
+				<h3>Datos de Uso</h3>
+				<p>Los Datos de Uso se recopilan automáticamente al usar el Servicio y pueden incluir:</p>
+				<ul>
+					<li>Dirección IP</li>
+					<li>Tipo de navegador y versión</li>
+					<li>Las páginas del Servicio que visita</li>
+					<li>Horas y fechas de visita</li>
+					<li>Identificadores únicos del dispositivo</li>
+					<li>Otra información diagnóstica</li>
+				</ul>
 
-    <main role="main" aria-label="Contenido principal">
-      <div class="page" role="region" aria-label="Documento de Política de Privacidad">
-        <section class="hero" aria-label="Encabezado del documento">
-          <h1>Política de Privacidad</h1>
-          <p><strong>Última actualización:</strong> 26 de diciembre de 2025</p>
-        </section>
+				<p>
+					
+				</p>
 
-        <section class="content" aria-label="Contenido del documento">
-          <article aria-label="Texto legal de privacidad">
-            <p>
-              Esta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación
-              de su información cuando usted usa el Servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.
-            </p>
-            <p>
-              Usamos sus datos personales para proporcionar y mejorar el Servicio. Al usar el Servicio, acepta la recopilación y el uso
-              de información de acuerdo con esta Política de Privacidad.
-            </p>
+				<h3>Tecnologías de Seguimiento y Cookies</h3>
+				<p>
+					Usamos Cookies y tecnologías similares para rastrear la actividad en nuestro Servicio y almacenar
+					cierta información.
+					Esto incluye:
+				</p>
+				<ul>
+					<li>Cookies de sesión y persistentes</li>
+					<li>Balizas web (web beacons)</li>
+				</ul>
+				<p>Usamos estas tecnologías para analizar y mejorar nuestro Servicio.</p>
 
-            <div class="note" role="note" aria-label="Nota informativa">
-              Esta Política de Privacidad fue creada con la ayuda de un generador de políticas.
-            </div>
+				<p>
+					
+				</p>
 
-            <h2>Interpretación y Definiciones</h2>
+				<h2>Uso de Sus Datos Personales</h2>
+				<p>La Compañía puede usar los Datos Personales para:</p>
+				<ul>
+					<li>Proveer y mantener el Servicio</li>
+					<li>Gestionar su cuenta</li>
+					<li>Contactarlo por correo, teléfono o SMS</li>
+					<li>Proveer actualizaciones o información sobre productos/servicios</li>
+					<li>Manejar solicitudes</li>
+					<li>Evaluar o llevar a cabo transferencias comerciales</li>
+					<li>Para análisis de datos y tendencias y mejorar nuestro Servicio</li>
+				</ul>
 
-            <h3>Interpretación</h3>
-            <p>
-              Las palabras cuyos primeros caracteres están en mayúscula tienen significados definidos bajo las siguientes condiciones.
-              Estas definiciones tienen el mismo significado sin importar si aparecen en singular o plural.
-            </p>
+				<p>
+					
+				</p>
 
-            <h3>Definiciones</h3>
-            <p>A efectos de esta Política de Privacidad:</p>
-            <ul>
-              <li><strong>Cuenta</strong> significa una cuenta única creada para usted para acceder a nuestro Servicio o a partes de nuestro Servicio.</li>
-              <li><strong>Afiliado</strong> significa una entidad que controla, es controlada por o está bajo control común con una parte.</li>
-              <li><strong>Compañía</strong> (denominada como “la Compañía”, “Nosotros”, “Nos” o “Nuestro” en este Acuerdo) se refiere a <strong>Find It LLC</strong>, Caracas, Venezuela.</li>
-              <li><strong>Cookies</strong> son pequeños archivos colocados en su computadora, dispositivo móvil u otro dispositivo por un sitio web, que contienen detalles de su historial de navegación.</li>
-              <li><strong>País</strong> se refiere a: Venezuela.</li>
-              <li><strong>Dispositivo</strong> significa cualquier dispositivo que pueda acceder al Servicio como una computadora, celular o tablet.</li>
-              <li><strong>Datos Personales</strong> es cualquier información que se relaciona con una persona identificada o identificable.</li>
-              <li><strong>Servicio</strong> se refiere al Sitio web.</li>
-              <li><strong>Proveedor del Servicio</strong> significa cualquier persona natural o jurídica que procesa datos en nombre de la Compañía.</li>
-              <li><strong>Datos de Uso</strong> se refiere a datos recopilados automáticamente al usar el Servicio.</li>
-              <li><strong>Sitio Web</strong> se refiere a <strong>FindIt</strong>, accesible desde <strong>https://findit-store.com/es/login</strong>.</li>
-              <li><strong>Usted</strong> significa la persona que accede o usa el Servicio.</li>
-            </ul>
+				<h2>Compartir Su Información Personal</h2>
+				<p>Podemos compartir su información en las siguientes situaciones:</p>
+				<ul>
+					<li>Con Proveedores de Servicio</li>
+					<li>En transferencias comerciales</li>
+					<li>Con Afiliados</li>
+					<li>Con socios comerciales</li>
+					<li>Con otros usuarios</li>
+					<li>Con su consentimiento</li>
+				</ul>
 
-            <h2>Recopilación y Uso de Sus Datos Personales</h2>
+				<p>
+					
+				</p>
 
-            <h3>Tipos de Datos Recopilados</h3>
+				<h2>Retención de Sus Datos Personales</h2>
+				<p>
+					La Compañía retendrá sus Datos Personales solo durante el tiempo necesario para los fines
+					establecidos en esta Política de
+					Privacidad o según lo exijan las leyes aplicables.
+				</p>
 
-            <h3>Datos Personales</h3>
-            <p>
-              Mientras usa nuestro Servicio, podemos pedirle que nos proporcione cierta información de identificación personal que puede
-              usarse para contactarlo o identificarlo. Esto puede incluir, pero no está limitado a:
-            </p>
-            <ul>
-              <li>Dirección de correo electrónico</li>
-              <li>Nombre y apellido</li>
-              <li>Número de teléfono</li>
-              <li>Dirección, Estado, Provincia, código postal, Ciudad</li>
-              <li>Datos de Uso</li>
-            </ul>
+				<p>
+					
+				</p>
 
-            <h3>Datos de Uso</h3>
-            <p>
-              Los Datos de Uso se recopilan automáticamente al usar el Servicio y pueden incluir:
-            </p>
-            <ul>
-              <li>Dirección IP</li>
-              <li>Tipo de navegador y versión</li>
-              <li>Las páginas del Servicio que visita</li>
-              <li>Horas y fechas de visita</li>
-              <li>Identificadores únicos del dispositivo</li>
-              <li>Otra información diagnóstica</li>
-            </ul>
+				<h2>Transferencia de Sus Datos Personales</h2>
+				<p>
+					Su información puede transferirse y mantenerse en computadoras fuera de su jurisdicción. Al
+					proporcionar su consentimiento,
+					usted acepta esta transferencia.
+				</p>
 
-            <h3>Tecnologías de Seguimiento y Cookies</h3>
-            <p>
-              Usamos Cookies y tecnologías similares para rastrear la actividad en nuestro Servicio y almacenar cierta información. Esto incluye:
-            </p>
-            <ul>
-              <li><strong>Cookies de sesión y persistentes</strong></li>
-              <li><strong>Balizas web (web beacons)</strong></li>
-            </ul>
-            <p>
-              Usamos estas tecnologías para analizar y mejorar nuestro Servicio.
-            </p>
+				<p>
+					
+				</p>
 
-            <h2>Uso de Sus Datos Personales</h2>
-            <p>La Compañía puede usar los Datos Personales para:</p>
-            <ul>
-              <li>Proveer y mantener el Servicio</li>
-              <li>Gestionar su cuenta</li>
-              <li>Contactarlo por correo, teléfono o SMS</li>
-              <li>Proveer actualizaciones o información sobre productos/servicios</li>
-              <li>Manejar solicitudes</li>
-              <li>Evaluar o llevar a cabo transferencias comerciales</li>
-              <li>Para análisis de datos y tendencias y mejorar nuestro Servicio</li>
-            </ul>
+				<h2>Eliminación de Sus Datos Personales</h2>
+				<p>
+					Usted tiene derecho a solicitar la eliminación de sus Datos Personales que hemos recopilado. Puede
+					actualizar, modificar o
+					eliminar su información desde las configuraciones de su cuenta o contactarnos para asistencia.
+				</p>
 
-            <h2>Compartir Su Información Personal</h2>
-            <p>Podemos compartir su información en las siguientes situaciones:</p>
-            <ul>
-              <li>Con Proveedores de Servicio</li>
-              <li>En transferencias comerciales</li>
-              <li>Con Afiliados</li>
-              <li>Con socios comerciales</li>
-              <li>Con otros usuarios</li>
-              <li>Con su consentimiento</li>
-            </ul>
+				<p>
+					
+				</p>
 
-            <h2>Retención de Sus Datos Personales</h2>
-            <p>
-              La Compañía retendrá sus Datos Personales solo durante el tiempo necesario para los fines establecidos en esta Política de Privacidad
-              o según lo exijan las leyes aplicables.
-            </p>
+				<h2>Divulgación de Sus Datos Personales</h2>
+				<p>
+					La Compañía puede divulgar sus datos si la ley lo requiere o en respuesta a solicitudes de
+					autoridades públicas legales.
+				</p>
 
-            <h2>Transferencia de Sus Datos Personales</h2>
-            <p>
-              Su información puede transferirse y mantenerse en computadoras fuera de su jurisdicción. Al proporcionar su consentimiento, usted acepta esta transferencia.
-            </p>
+				<p>
+					
+				</p>
 
-            <h2>Eliminación de Sus Datos Personales</h2>
-            <p>
-              Usted tiene derecho a solicitar la eliminación de sus Datos Personales que hemos recopilado. Puede actualizar, modificar o eliminar su información
-              desde las configuraciones de su cuenta o contactarnos para asistencia.
-            </p>
+				<h2>Seguridad de Sus Datos Personales</h2>
+				<p>
+					La seguridad de sus datos es importante para nosotros, pero ningún método de transmisión o
+					almacenamiento electrónico es
+					100% seguro.
+				</p>
 
-            <h2>Divulgación de Sus Datos Personales</h2>
-            <p>
-              La Compañía puede divulgar sus datos si la ley lo requiere o en respuesta a solicitudes de autoridades públicas legales.
-            </p>
+				<p>
+					
+				</p>
 
-            <h2>Seguridad de Sus Datos Personales</h2>
-            <p>
-              La seguridad de sus datos es importante para nosotros, pero ningún método de transmisión o almacenamiento electrónico es 100% seguro.
-            </p>
+				<h2>Privacidad de los Niños</h2>
+				<p>
+					El Servicio no se dirige a menores de 13 años y no recopilamos intencionalmente información personal
+					de menores de esa edad.
+				</p>
 
-            <h2>Privacidad de los Niños</h2>
-            <p>
-              El Servicio no se dirige a menores de 13 años y no recopilamos intencionalmente información personal de menores de esa edad.
-            </p>
+				<p>
+					
+				</p>
 
-            <h2>Enlaces a Otros Sitios Web</h2>
-            <p>
-              Nuestro Servicio puede contener enlaces a otros sitios que no son operados por nosotros. No somos responsables del contenido o políticas de privacidad de esos sitios.
-            </p>
+				<h2>Enlaces a Otros Sitios Web</h2>
+				<p>
+					Nuestro Servicio puede contener enlaces a otros sitios que no son operados por nosotros. No somos
+					responsables del contenido
+					o políticas de privacidad de esos sitios.
+				</p>
 
-            <h2>Cambios a Esta Política de Privacidad</h2>
-            <p>
-              Podemos actualizar esta Política de Privacidad y notificaremos los cambios publicándolos en esta página.
-            </p>
+				<p>
+					
+				</p>
 
-            <h2>Contáctenos</h2>
-            <p>Si tiene preguntas sobre esta Política de Privacidad, puede contactarnos:</p>
-            <ul>
-              <li><strong>Por teléfono:</strong> +584143346474</li>
-            </ul>
-          </article>
-        </section>
-      </div>
+				<h2>Cambios a Esta Política de Privacidad</h2>
+				<p>
+					Podemos actualizar esta Política de Privacidad y notificaremos los cambios publicándolos en esta
+					página.
+				</p>
 
-      <footer role="contentinfo" aria-label="Pie de página">
-        Campo Alegre TV, C.A. – Todos los derechos reservados.
-      </footer>
-    </main>
-  </body>
-</html>
+				<p>
+					
+				</p>
+
+				<h2>Contáctenos</h2>
+				<p>Si tiene preguntas sobre esta Política de Privacidad, puede contactarnos:</p>
+				<ul>
+					<li><strong>Por teléfono:</strong> +584143346474</li>
+				</ul>
+			</article>
+		</section>
+	</div>
+
+	<footer>
+		Campo Alegre TV, C.A. – Todos los derechos reservados.
+	</footer>
+</main>
