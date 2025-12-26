@@ -29,4 +29,9 @@ export class DashboardServiceService {
         console.log('changeIsActiveState', id, isAllow);
         return this.http.put<StateExecution<null>>(`${this.apiUrl}/IsAllow/${id}`, { id: id, isAllow: isAllow });
     }
+
+    delete(id: number) {
+        id = -1;
+        return this.http.delete<StateExecution<null>>(`${this.apiUrl}/DeleteOrder/${id}`);
+    }              
 }

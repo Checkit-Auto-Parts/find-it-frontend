@@ -77,7 +77,6 @@ export class LoginComponent {
 
 		// let localstorage : string = "";
 		// localstorage = this.localStorageService.get(this.keysService.PREFERRED_LANG);
-		debugger;
 		if ((this.currentLang  === 'es' || this.currentLang  === 'en')) {
 			// localStorage.setItem('preferredLang', this.currentLang );
 			this.localStorageService.set(this.keysService.PREFERRED_LANG, this.currentLang );
