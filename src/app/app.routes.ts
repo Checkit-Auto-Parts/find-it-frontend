@@ -11,7 +11,7 @@ import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/es/login',
+        redirectTo: '/login',
         pathMatch: 'full',
         
     },

@@ -1,10 +1,10 @@
 // Development server for SSR with Express and Angular Universal
-// import { app as serverEn } from './server/en/server.mjs';
-// import { app as serverEs } from './server/es/server.mjs';
+import { app as serverEn } from './server/en/server.mjs';
+import { app as serverEs } from './server/es/server.mjs';
 
 // Production server for SSR with Express and Angular Universal
-import { app as serverEn } from './dist/angular-ssr/server/en/server.mjs';
-import { app as serverEs } from './dist/angular-ssr/server/es/server.mjs';
+// import { app as serverEn } from './dist/angular-ssr/server/en/server.mjs';
+// import { app as serverEs } from './dist/angular-ssr/server/es/server.mjs';
 
 import express from 'express';
 import path from 'path';
