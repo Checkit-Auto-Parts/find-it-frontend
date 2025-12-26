@@ -6,12 +6,18 @@ import { authGuard } from './core/guards/auth.guard';
 import { internalRoleGuard } from './core/guards/internal-role.guard';
 import { PagesNavBarComponent } from './core/components/navbar/pages-nav-bar/pages-nav-bar.component';
 import { RedirectComponent } from './modules/security/components/redirect/redirect.component';
+import { PrivacyPolicyComponent } from './modules/privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
     {
         path: '',
         redirectTo: '/es/login',
         pathMatch: 'full',
+        
+    },
+    {
+        path: 'privacy-policy',
+        component: PrivacyPolicyComponent,
     },
     {
         path: ':lang',
@@ -20,6 +26,7 @@ export const routes: Routes = [
                 path: '',
                 component: LoginComponent,
             },
+           
             {
                 path: 'login',
                 component: LoginComponent,

@@ -13,13 +13,21 @@ import { CustomPaginatorConfig } from '../../../core/models/other/custom-paginat
 import { DashboardServiceService } from '../services/dashboard.service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { OrderDTO } from '../models/order.dto';
-import { ExcludeDefaultDatePipe } from "../../../core/pipes/exclude-default-date.pipe";
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-dashboard-main',
     standalone: true,
-    imports: [NgClass, LayoutModule, MatCardModule, MaterialTableModule, NgIf, MatPaginator, MatSort, CustomPaginatorComponent, ExcludeDefaultDatePipe],
+    imports: [
+        NgClass, 
+        LayoutModule, 
+        MatCardModule, 
+        MaterialTableModule, 
+        NgIf, 
+        MatPaginator, 
+        MatSort, 
+        CustomPaginatorComponent, 
+    ],
     templateUrl: './dashboard-main.component.html',
     styleUrl: './dashboard-main.component.css'
 })
@@ -180,15 +188,16 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
     }
 
     delete(entity: OrderDTO) {
-        /*
+        console.log('delete', entity);
         this.dialogMessageService
             .showDecisionDialog('¿Está seguro de que desea eliminar este equipamiento?')
             .afterClosed()
             .subscribe((response: boolean) => {
                 if (response) {
                     if (response == true) {
-                        this.equipmentService.delete(entity.id!).subscribe({
+                        this.dashboardService.delete(entity.id!).subscribe({
                             next: response => {
+                                console.log('response', response);  
                                 if (response.status) {
                                     this.dialogMessageService.showSuccessDialog(response.message.description);
                                     this.fetchPaginatedList();
@@ -203,6 +212,5 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
                     }
                 }
             });
-            */
     }
 }
