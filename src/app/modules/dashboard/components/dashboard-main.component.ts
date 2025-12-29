@@ -14,6 +14,7 @@ import { DashboardServiceService } from '../services/dashboard.service.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { OrderDTO } from '../models/order.dto';
 import { MatDialog } from '@angular/material/dialog';
+import { UpdateOrderComponent } from '../../order/update-order/update-order/update-order.component';
 
 @Component({
     selector: 'app-dashboard-main',
@@ -61,16 +62,11 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
         'Apellido',
         'Marca',
         'Modelo',
+        'Año',
         'Carrocería',
         '#Cilindros',
         'Transmisión',
-        'Tracción',
-        'Tipo de Combustible',
-        'Año',
         'Foto',
-
-        
-        'Activo',
         'Acciones'
     ];
 
@@ -140,23 +136,43 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
     }
     // End Paginator methods
 
-    update(entity: OrderDTO) {
-        this.openDialogEquipment(entity);
-    }
+    update(orderDto: OrderDTO) {
+        this.openDialogSendComment({
+            id: orderDto.id,
+            name: orderDto.name,
+            lastName: orderDto.lastName,
+            createdAt: orderDto.createdAt,
+            createdBy: orderDto.createdBy,
+            modifiedAt: orderDto.modifiedAt,
+            modifiedBy: orderDto.modifiedBy,
+            isDeleted: orderDto.isDeleted,
+            isAllow: orderDto.isAllow,
+            vehiculeId: orderDto.vehiculeId,
+            vehiculeMakeName: orderDto.vehiculeMakeName,
+            vehiculeModelName: orderDto.vehiculeModelName,
+            vehiculeBodyStyleName: orderDto.vehiculeBodyStyleName,
+            vehiculeEngineNumberOfCylinders: orderDto.vehiculeEngineNumberOfCylinders,
+            vehiculeTransmissionName: orderDto.vehiculeTransmissionName
+            ,vehiculeDriveTypeName: orderDto.vehiculeDriveTypeName,
+            vehiculeFuelTypeName: orderDto.vehiculeFuelTypeName,
+            vehiculeYear: orderDto.vehiculeYear,
+            languageId: orderDto.languageId,
+        });
+    };
 
-    openDialogEquipment(entity: OrderDTO): void {
+    openDialogSendComment(orderDto: OrderDTO): void {
         
-        /*this.dialog.open(EquipmentSupplierCreateComponent, {
+        this.dialog.open(UpdateOrderComponent, {
             maxWidth: '640px',
             height: 'auto',
-            data: entity,
+            data: orderDto,
         }).afterClosed()
             .subscribe((result: boolean) => {
                 if (result) {
-                    this.fetchPaginatedList();
+                    // this.fetchPaginatedList();
                 }
             });
-         */   
+         
     }
 
     changeIsActiveState(entity: OrderDTO) {
