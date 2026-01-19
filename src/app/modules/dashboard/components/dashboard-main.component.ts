@@ -137,27 +137,8 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
     // End Paginator methods
 
     update(orderDto: OrderDTO) {
-        this.openDialogSendComment({
-            id: orderDto.id,
-            name: orderDto.name,
-            lastName: orderDto.lastName,
-            createdAt: orderDto.createdAt,
-            createdBy: orderDto.createdBy,
-            modifiedAt: orderDto.modifiedAt,
-            modifiedBy: orderDto.modifiedBy,
-            isDeleted: orderDto.isDeleted,
-            isAllow: orderDto.isAllow,
-            vehiculeId: orderDto.vehiculeId,
-            vehiculeMakeName: orderDto.vehiculeMakeName,
-            vehiculeModelName: orderDto.vehiculeModelName,
-            vehiculeBodyStyleName: orderDto.vehiculeBodyStyleName,
-            vehiculeEngineNumberOfCylinders: orderDto.vehiculeEngineNumberOfCylinders,
-            vehiculeTransmissionName: orderDto.vehiculeTransmissionName
-            ,vehiculeDriveTypeName: orderDto.vehiculeDriveTypeName,
-            vehiculeFuelTypeName: orderDto.vehiculeFuelTypeName,
-            vehiculeYear: orderDto.vehiculeYear,
-            languageId: orderDto.languageId,
-        });
+        console.log('update', orderDto);
+        this.openDialogSendComment(orderDto);
     };
 
     openDialogSendComment(orderDto: OrderDTO): void {

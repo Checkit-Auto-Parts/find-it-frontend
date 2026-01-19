@@ -7,6 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OrderDTO } from '../../../dashboard/models/order.dto';
 import { MatTableDataSource } from '@angular/material/table';
+import { SendTemplateDTO } from './models/sendTemplate.dto';
+import { UpdateOrderService } from './services/update-order.service';
 
 @Component({
     selector: 'app-update-order',
@@ -28,17 +30,38 @@ export class UpdateOrderComponent {
         'comment',
         'action'
     ];
-
+    sendMessagedto!: SendTemplateDTO;
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: OrderDTO,
         private formBuilder: FormBuilder,
-    ) { }
+        private updateOrderService: UpdateOrderService
+    ) { 
+        // console.log('injection?',this.data);
+        this.createFormControls();
+    }
 
     createFormControls() {
         this.orderForm = this.formBuilder.group({
             comment: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+            phoneNumber: new FormControl('', [Validators.required, Validators.maxLength(15)]),
         });
     }
-    sendComment() { }
-    save() { }
+    sendComment() { 
+        if (this.orderForm.valid) {
+            const comment = this.orderForm.get('comment')?.value;
+            const number = this.orderForm.get('phoneNumber')?.value;
+            console.log('number to send:', number);
+            this.sendMessagedto = {
+                ToPhoneE164: number,
+                TemplateName: 'hello_world',
+                LanguageCode: 'en_US'
+            }
+            
+            this.updateOrderService.sendMessage(this.sendMessagedto).subscribe({
+                next: (response) => {
+                    console.log('Message sent successfully', response);
+                }
+            });
+        }
+    }
 }
