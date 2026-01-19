@@ -20,4 +20,5 @@ export interface OrderDTO {
     vehiculeFuelTypeName: string;
     vehiculeYear: number;
     languageId: number;
+    comments: string;
 }
