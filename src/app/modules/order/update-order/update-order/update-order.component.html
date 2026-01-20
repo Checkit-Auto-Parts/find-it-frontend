@@ -11,18 +11,23 @@
       
             <mat-form-field class="f-1">
                 <input matInput
-                        type="integer"
+                        type="number"
                         class="medium"
+                        inputmode="numeric"
                         formControlName="phoneNumber"
-                        maxlength="15"
-                        placeholder="Número de Teléfono"/>
+                        onlyDigits
+                        placeholder="Ejemplo: 584195555555"/>
             </mat-form-field>
+            <mat-checkbox class="f-1" formControlName="isCustomizedMessage"  (click)="enable($event)">
+                Mensaje Personalizado
+            </mat-checkbox>
             <mat-form-field class="f-1">
                 <textarea matInput
                         formControlName="comment"
                         type="textarea"
                         maxlength="100"
                         class="medium"
+                        [readonly]="isReadonly"
                         placeholder="Mensaje"></textarea>
                 <mat-error>Escriba aquí</mat-error>
             </mat-form-field>
@@ -39,7 +44,7 @@
         <button mat-flat-button
                 color="accent"
                 cdkFocusInitial
-                (click)="sendComment()">
+                (click)="sendMessage()">
             Enviar Mensaje
         </button>
     </mat-dialog-actions>
