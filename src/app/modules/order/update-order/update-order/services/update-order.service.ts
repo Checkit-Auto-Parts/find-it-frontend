@@ -3,7 +3,8 @@ import { environment } from '../../../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { StateExecution } from '../../../../../core/models/normalized/stateExecution.model';
 import { OrderDTO } from '../../../../dashboard/models/order.dto';
-import { SendTemplateDTO } from '../models/sendTemplate.dto';
+import { SendTemplateDTO } from '../models/send-template.dto';
+import { SendTextDTO } from '../models/send-text.dto';
 
 @Injectable({
     providedIn: 'root'
@@ -15,11 +16,11 @@ export class UpdateOrderService {
         private http: HttpClient
     ) { }
     
-    save(dto: OrderDTO[]) {
-        return this.http.post<StateExecution<null>>(`${this.apiUrl}/sendComment`, dto);
+    sendMessageByTemplate(sendMessageByTemplateDto: SendTemplateDTO) {
+        return this.http.post<StateExecution<SendTemplateDTO>>(`${this.apiUrl}template`, sendMessageByTemplateDto );
     }
 
-    sendMessage(sendMessageToDto: SendTemplateDTO) {
-        return this.http.post<StateExecution<null>>(`${this.apiUrl}template`, sendMessageToDto );
+    sendMessageByText(sendMessageByTextDto: SendTextDTO) {
+        return this.http.post<StateExecution<SendTextDTO>>(`${this.apiUrl}text`, sendMessageByTextDto );
     }
 }
