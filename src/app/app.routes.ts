@@ -20,6 +20,11 @@ export const routes: Routes = [
         component: PrivacyPolicyComponent,
     },
     {
+    path: 'data-deletion',
+        loadComponent: () => import('./modules/data-deletion/data-deletion/data-deletion.component')
+        .then(m => m.DataDeletionComponent)
+    },
+    {
         path: ':lang',
         children: [
             {
