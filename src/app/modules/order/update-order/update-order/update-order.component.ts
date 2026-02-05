@@ -92,8 +92,8 @@ export class UpdateOrderComponent implements OnInit {
             } else {
                 this.sendMessageByTemplatedto = {
                     toPhoneE164: number,
-                    templateName: 'hello_world',
-                    languageCode: 'en_US'
+                    templateName: 'initial_template',
+                    languageCode: 'es'
                 };
 
                 this.updateOrderService.sendMessageByTemplate(this.sendMessageByTemplatedto).subscribe({
