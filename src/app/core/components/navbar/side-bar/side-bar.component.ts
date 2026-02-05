@@ -147,7 +147,7 @@ export class SideBarComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	logOut() {
 		this.dialogMessageService
-			.showDecisionDialog('¿Seguro que quiere cerrar sesión?', false)
+			.showDecisionDialog('Are you sure you want to log out?', false)
 			.afterClosed()
 			.subscribe((response: boolean) => {
 				if (response) {
