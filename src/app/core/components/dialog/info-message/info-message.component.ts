@@ -33,7 +33,7 @@ export class InfoMessageComponent {
 	setData() {
 		if (this.data.title == undefined) {
 			if (this.data.status == true) {
-				this._title = "Éxito";
+				this._title = "Success";
 			} else {
 				this._title = "Error";
 			}
