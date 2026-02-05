@@ -44,16 +44,8 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
         'BodyStyle',
         'NumberOfCylinders',
         'Transmission',
-        'DriveType',
-        'FuelType',
         'Year',
         'Picture',
-
-        'Created At',
-        'Created By',
-        'Modified At',
-        'Modified By',
-        'Is Active',
         'Actions'
     ];
 

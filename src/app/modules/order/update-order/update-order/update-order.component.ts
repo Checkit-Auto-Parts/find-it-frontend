@@ -83,9 +83,9 @@ export class UpdateOrderComponent implements OnInit {
                     next: (response) => {
                         console.log(response.message.detailDev);
                         if (response.status) {   
-                            this.dialogMessageService.showSuccessDialog("Mensaje enviado correctamente.");
+                            this.dialogMessageService.showSuccessDialog("Message sent successfully.");
                         } else {
-                            this.dialogMessageService.showErrorDialog(response.message.description?.toString() || `Mensaje no enviado.`);
+                            this.dialogMessageService.showErrorDialog(response.message.description?.toString() || `Message not sent.`);
                         }
                     }
                 });
@@ -100,9 +100,9 @@ export class UpdateOrderComponent implements OnInit {
                 this.updateOrderService.sendMessageByTemplate(this.sendMessageByTemplatedto).subscribe({
                     next: (response) => {
                         if (response.status) {   
-                            this.dialogMessageService.showSuccessDialog("Mensaje enviado correctamente.");
+                            this.dialogMessageService.showSuccessDialog("Message sent successfully.");
                         } else {
-                            this.dialogMessageService.showErrorDialog(`${response.message} Mensaje no enviado.`);                    
+                            this.dialogMessageService.showErrorDialog(`${response.message} Message not sent.`);                    
                         }
                     }
                 });
