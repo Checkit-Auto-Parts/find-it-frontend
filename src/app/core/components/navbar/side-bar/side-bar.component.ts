@@ -16,18 +16,20 @@ import { PermissionDto } from '../../../../modules/user/models/permission.dto';
 import { LocalStorageKeysService } from '../../../../modules/security/services/local-storage-keys.service';
 import { PermissionService } from '../../../../modules/user/services/permission.service';
 import { constrainedMemory } from 'process';
+import { BreadcrumbsComponent } from "../../breadcrumbs/breadcrumbs.component";
 
 @Component({
 	selector: 'app-side-bar',
 	standalone: true,
 	imports: [
-		CoreModule,
-		MaterialNavbarModule,
-		LayoutModule,
-		MatListModule,
-		RouterModule,
-		MatButtonModule
-	],
+    CoreModule,
+    MaterialNavbarModule,
+    LayoutModule,
+    MatListModule,
+    RouterModule,
+    MatButtonModule,
+    BreadcrumbsComponent
+],
 	providers: [PermissionService],
 	templateUrl: './side-bar.component.html',
 	styleUrl: './side-bar.component.css'

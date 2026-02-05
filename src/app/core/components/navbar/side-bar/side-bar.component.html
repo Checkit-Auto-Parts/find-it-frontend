@@ -110,6 +110,7 @@
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content *ngIf="isAuthorized()">
+		<app-breadcrumbs class="bc-host"></app-breadcrumbs>
 		<router-outlet></router-outlet>
 	</mat-sidenav-content>
 </mat-sidenav-container>

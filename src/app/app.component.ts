@@ -9,6 +9,7 @@ import { CoreModule } from './core/modules/core.module';
 import { MaterialNavbarModule } from './core/modules/material-navbar.module';
 import { MatInputModule } from "@angular/material/input";
 import { MaterialFormModule } from "./core/modules/material-form.module";
+import { BreadcrumbsComponent } from "./core/components/breadcrumbs/breadcrumbs.component";
 
 @Component({
 	selector: 'app-root',

@@ -7,10 +7,12 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { provideAnimations, provideNoopAnimations } from '@angular/platform-browser/animations';
+import { provideNgxMask } from 'ngx-mask';
 
 
 export const appConfig: ApplicationConfig = {
 	providers: [
+		provideNgxMask(),
 		provideZoneChangeDetection({ eventCoalescing: true }),
 		provideRouter(routes),
 		provideClientHydration(withEventReplay()),

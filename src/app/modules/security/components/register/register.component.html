@@ -1,0 +1,148 @@
+<!-- register.component.html -->
+<div class="fi-auth">
+    <mat-card class="fi-card">
+        <div class="fi-header">
+            <div class="fi-badge">
+                <mat-icon>person_add</mat-icon>
+            </div>
+
+            <div>
+                <h1 class="fi-title">Create your account</h1>
+                <p class="fi-subtitle">Join Find It and start requesting spare parts faster.</p>
+            </div>
+        </div>
+
+        <!-- ✅ IMPORTANT: form tag + [formGroup] wrapper -->
+        <form class="fi-form" [formGroup]="form" (ngSubmit)="submit()">
+            <div class="fi-grid">
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="firstName" autocomplete="given-name" />
+                    <mat-error *ngIf="f.firstName.touched && f.firstName.hasError('required')">
+                        First name is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.firstName.touched && f.firstName.hasError('maxlength')">
+                        Max 60 characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Last name</mat-label>
+                    <input matInput formControlName="lastName" autocomplete="family-name" />
+                    <mat-error *ngIf="f.lastName.touched && f.lastName.hasError('required')">
+                        Last name is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.lastName.touched && f.lastName.hasError('maxlength')">
+                        Max 60 characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-wide">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="userNameOrEmail" autocomplete="email"
+                        placeholder="you@example.com" />
+                    <mat-icon matSuffix>mail</mat-icon>
+
+                    <mat-error *ngIf="f.userNameOrEmail.touched && f.userNameOrEmail.hasError('required')">
+                        Email is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.userNameOrEmail.touched && f.userNameOrEmail.hasError('email')">
+                        Enter a valid email.
+                    </mat-error>
+                    <mat-error *ngIf="f.userNameOrEmail.touched && f.userNameOrEmail.hasError('maxlength')">
+                        Max 120 characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password -->
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Password</mat-label>
+                    <input matInput [type]="passwordVisible ? 'text' : 'password'" formControlName="password"
+                        autocomplete="new-password" placeholder="At least 8 characters" />
+
+                    <button mat-icon-button matSuffix type="button" class="fi-icon-btn" (click)="togglePassword()"
+                        [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+                        <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="f.password.touched && f.password.hasError('required')">
+                        Password is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.password.touched && f.password.hasError('minlength')">
+                        Min 8 characters.
+                    </mat-error>
+                    <mat-error *ngIf="f.password.touched && f.password.hasError('pattern')">
+                        Must include uppercase, lowercase, and a number.
+                    </mat-error>
+                    <mat-error *ngIf="f.password.touched && f.password.hasError('maxlength')">
+                        Max 64 characters.
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Confirm Password -->
+                <mat-form-field appearance="outline" class="fi-field fi-half" [class.fi-error]="passwordMismatch">
+                    <mat-label>Confirm password</mat-label>
+                    <input matInput [type]="confirmPasswordVisible ? 'text' : 'password'"
+                        formControlName="confirmPassword" autocomplete="new-password"
+                        placeholder="Repeat your password" />
+
+                    <button mat-icon-button matSuffix type="button" class="fi-icon-btn"
+                        (click)="toggleConfirmPassword()"
+                        [attr.aria-label]="confirmPasswordVisible ? 'Hide password' : 'Show password'">
+                        <mat-icon>{{ confirmPasswordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="f.confirmPassword.touched && f.confirmPassword.hasError('required')">
+                        Confirm password is required.
+                    </mat-error>
+                    <mat-error *ngIf="passwordMismatch">
+                        Passwords do not match.
+                    </mat-error>
+
+                </mat-form-field>
+
+                <div class="fi-password-warning" *ngIf="passwordMismatch">
+                    <mat-icon>error_outline</mat-icon>
+                    <span>Passwords do not match</span>
+                </div>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Phone</mat-label>
+                    <input matInput type="text" inputmode="numeric" formControlName="phone" prefix="+58 "
+                        mask="000 0000000" [showMaskTyped]="true" placeholder="+58 412 1234567" autocomplete="tel" />
+                    <mat-icon matSuffix>phone</mat-icon>
+
+                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('required')">
+                        Phone is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('phoneIncomplete')">
+                        Phone must match: +58 4XX 1234567
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-wide">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" autocomplete="street-address" />
+                    <mat-icon matSuffix>location_on</mat-icon>
+
+                    <mat-error *ngIf="f.address.touched && f.address.hasError('required')">
+                        Address is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.address.touched && f.address.hasError('maxlength')">
+                        Max 200 characters.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <button mat-flat-button color="primary" class="fi-btn" type="submit"
+                [disabled]="isSubmitting || form.invalid">
+                <mat-icon>how_to_reg</mat-icon>
+                <span>{{ isSubmitting ? 'Creating account...' : 'Create account' }}</span>
+            </button>
+
+            <p class="fi-footnote">
+                By creating an account you agree to our <a href="#" class="fi-link">Terms</a>.
+            </p>
+        </form>
+    </mat-card>
+</div>

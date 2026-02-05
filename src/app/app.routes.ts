@@ -20,9 +20,14 @@ export const routes: Routes = [
         component: PrivacyPolicyComponent,
     },
     {
-    path: 'data-deletion',
+        path: 'data-deletion',
         loadComponent: () => import('./modules/data-deletion/data-deletion/data-deletion.component')
         .then(m => m.DataDeletionComponent)
+    },
+    {
+        path: 'register',
+        loadComponent: () => import('./modules/security/components/register/register.component')
+        .then(m => m.RegisterComponent),
     },
     {
         path: ':lang',
@@ -40,10 +45,12 @@ export const routes: Routes = [
                 path: 'app',
                 component: SideBarComponent,
                 canActivate: [authGuard],
+                data: { breadcrumb: null }, // lo ignoramos
                 children: [
                     {
                         path: 'dashboard',
                         loadComponent: () => import('./modules/dashboard/components/dashboard-main.component').then((m) => m.DashboardMainComponent),
+                        data: { breadcrumb: { en: 'Orders', es: 'Ped' } }
                     },
                 ]
             },

@@ -37,6 +37,7 @@
 		"guid-typescript": "^1.0.9",
 		"jsonwebtoken": "^9.0.2",
 		"jwt-decode": "^4.0.0",
+		"ngx-mask": "^21.0.1",
 		"ngx-spinner": "^19.0.0",
 		"rxjs": "~7.8.0",
 		"subsink": "^1.0.2",

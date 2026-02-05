@@ -148,10 +148,7 @@ export class LoginComponent {
 		this.formLogin.controls['userName'].setValue(value.mail);
 		this.formLogin.controls['password'].setValue(value.pass);
 	}
-	loginMsal() {
-		this.authService.loginMsal();
-	}
-
+	
 	setLoginDisplay() {
 		// let accounts = this.authMService.instance.getAllAccounts();
 		// let loginDisplay = accounts.length > 0;
