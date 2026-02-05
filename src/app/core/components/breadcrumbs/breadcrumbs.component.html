@@ -1,0 +1,23 @@
+<nav class="breadcrumbs" *ngIf="vm$ | async as vm" aria-label="Breadcrumb">
+    <ng-container *ngIf="vm.crumbs.length > 0">
+
+        <a class="breadcrumbs__home" [routerLink]="vm.homeUrl" [title]="vm.homeTitle" aria-label="Home">
+            <mat-icon class="breadcrumbs__homeIcon">home</mat-icon>
+        </a>
+
+        <div class="breadcrumbs__trail" aria-label="Breadcrumb trail">
+            <ng-container *ngFor="let crumb of vm.crumbs; let last = last">
+                <mat-icon class="breadcrumbs__separatorIcon" aria-hidden="true">chevron_right</mat-icon>
+
+                <a *ngIf="!last" class="breadcrumbs__link" [routerLink]="crumb.url">
+                    <span class="breadcrumbs__text">{{ crumb.label }}</span>
+                </a>
+
+                <span *ngIf="last" class="breadcrumbs__current">
+                    <span class="breadcrumbs__text">{{ crumb.label }}</span>
+                </span>
+            </ng-container>
+        </div>
+
+    </ng-container>
+</nav>

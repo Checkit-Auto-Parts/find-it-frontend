@@ -16,6 +16,7 @@ import { RegisterResponseDto } from '../models/user-register-response.dto';
 import { ChangePasswordDTO, ResetPasswordDTO } from '../models/user.reset-password.dto';
 import { StateExecution } from '../../../core/models/normalized/stateExecution.model';
 import { LangRouterService } from '../../../core/services/lang-router.service';
+import { RegisterRequestDto } from '../models/register.dto';
 // import { MsalService } from '@azure/msal-angular';
 
 @Injectable({
@@ -189,24 +190,7 @@ export class SecurityService {
 		}
 	}
 
-	//MSAL
-	loginMsal() {
-		// this.msalService.loginRedirect();
-	}
-
-	logoutMsal() {
-		// this.msalService.logout();
-	}
-
-	loginAD(data: UserLoginDto) {
-		return this.http.post<LoginResponseDTO>(this.endPoint + '/loginAD', data).pipe(
-			map((response: LoginResponseDTO) => {
-				const user = response;
-				if (user) {
-					this.saveToken(response);
-					this.setCurrentUser(user);
-				}
-			})
-		);
+	register(payload: RegisterRequestDto){
+		return this.http.post<StateExecution<RegisterResponseDto>>(this.endPoint + '/register', payload);
 	}
 }
