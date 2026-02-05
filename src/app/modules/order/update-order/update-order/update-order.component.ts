@@ -81,7 +81,6 @@ export class UpdateOrderComponent implements OnInit {
                 };
                 this.updateOrderService.sendMessageByText(this.sendMessageByTextdto).subscribe({
                     next: (response) => {
-                        console.log(response.message.detailDev);
                         if (response.status) {   
                             this.dialogMessageService.showSuccessDialog("Message sent successfully.");
                         } else {
