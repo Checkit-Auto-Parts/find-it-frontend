@@ -1,6 +1,9 @@
 <!-- register.component.html -->
 <div class="fi-auth">
     <mat-card class="fi-card">
+        <!-- ========================= -->
+        <!-- Header -->
+        <!-- ========================= -->
         <div class="fi-header">
             <div class="fi-badge">
                 <mat-icon>person_add</mat-icon>
@@ -8,13 +11,22 @@
 
             <div>
                 <h1 class="fi-title">Create your account</h1>
-                <p class="fi-subtitle">Join Find It and start requesting spare parts faster.</p>
+                <p class="fi-subtitle">
+                    Join Find It and start requesting spare parts faster.
+                </p>
             </div>
         </div>
 
-        <!-- ✅ IMPORTANT: form tag + [formGroup] wrapper -->
+        <!-- ========================= -->
+        <!-- Form -->
+        <!-- ========================= -->
         <form class="fi-form" [formGroup]="form" (ngSubmit)="submit()">
             <div class="fi-grid">
+
+                <!-- ========================= -->
+                <!-- User Information -->
+                <!-- ========================= -->
+
                 <mat-form-field appearance="outline" class="fi-field fi-half">
                     <mat-label>First name</mat-label>
                     <input matInput formControlName="firstName" autocomplete="given-name" />
@@ -37,7 +49,25 @@
                     </mat-error>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" class="fi-field fi-wide">
+                <!-- ========================= -->
+                <!-- Contact -->
+                <!-- ========================= -->
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Phone</mat-label>
+                    <input matInput type="text" inputmode="numeric" formControlName="phone" prefix="+58 "
+                        mask="000 0000000" [showMaskTyped]="true" placeholder="+58 412 1234567" autocomplete="tel" />
+                    <mat-icon matSuffix>phone</mat-icon>
+
+                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('required')">
+                        Phone is required.
+                    </mat-error>
+                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('phoneIncomplete')">
+                        Phone must match: +58 4XX 1234567
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
                     <mat-label>Email</mat-label>
                     <input matInput type="email" formControlName="userNameOrEmail" autocomplete="email"
                         placeholder="you@example.com" />
@@ -54,14 +84,15 @@
                     </mat-error>
                 </mat-form-field>
 
+                <!-- ========================= -->
                 <!-- Password -->
+                <!-- ========================= -->
+
                 <mat-form-field appearance="outline" class="fi-field fi-half">
                     <mat-label>Password</mat-label>
                     <input matInput [type]="passwordVisible ? 'text' : 'password'" formControlName="password"
-                        autocomplete="new-password" placeholder="At least 8 characters" />
-
-                    <button mat-icon-button matSuffix type="button" class="fi-icon-btn" (click)="togglePassword()"
-                        [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+                        autocomplete="new-password" />
+                    <button mat-icon-button matSuffix type="button" class="fi-icon-btn" (click)="togglePassword()">
                         <mat-icon>{{ passwordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
@@ -72,23 +103,16 @@
                         Min 8 characters.
                     </mat-error>
                     <mat-error *ngIf="f.password.touched && f.password.hasError('pattern')">
-                        Must include uppercase, lowercase, and a number.
-                    </mat-error>
-                    <mat-error *ngIf="f.password.touched && f.password.hasError('maxlength')">
-                        Max 64 characters.
+                        Must include uppercase, lowercase and a number.
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Confirm Password -->
-                <mat-form-field appearance="outline" class="fi-field fi-half" [class.fi-error]="passwordMismatch">
+                <mat-form-field appearance="outline" class="fi-field fi-half">
                     <mat-label>Confirm password</mat-label>
                     <input matInput [type]="confirmPasswordVisible ? 'text' : 'password'"
-                        formControlName="confirmPassword" autocomplete="new-password"
-                        placeholder="Repeat your password" />
-
+                        formControlName="confirmPassword" autocomplete="new-password" />
                     <button mat-icon-button matSuffix type="button" class="fi-icon-btn"
-                        (click)="toggleConfirmPassword()"
-                        [attr.aria-label]="confirmPasswordVisible ? 'Hide password' : 'Show password'">
+                        (click)="toggleConfirmPassword()">
                         <mat-icon>{{ confirmPasswordVisible ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
 
@@ -98,7 +122,6 @@
                     <mat-error *ngIf="passwordMismatch">
                         Passwords do not match.
                     </mat-error>
-
                 </mat-form-field>
 
                 <div class="fi-password-warning" *ngIf="passwordMismatch">
@@ -106,21 +129,9 @@
                     <span>Passwords do not match</span>
                 </div>
 
-                <mat-form-field appearance="outline" class="fi-field fi-half">
-                    <mat-label>Phone</mat-label>
-                    <input matInput type="text" inputmode="numeric" formControlName="phone" prefix="+58 "
-                        mask="000 0000000" [showMaskTyped]="true" placeholder="+58 412 1234567" autocomplete="tel" />
-                    <mat-icon matSuffix>phone</mat-icon>
+                
 
-                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('required')">
-                        Phone is required.
-                    </mat-error>
-                    <mat-error *ngIf="f.phone.touched && f.phone.hasError('phoneIncomplete')">
-                        Phone must match: +58 4XX 1234567
-                    </mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="outline" class="fi-field fi-wide">
+                <mat-form-field appearance="outline" class="fi-field fi-span-2">
                     <mat-label>Address</mat-label>
                     <input matInput formControlName="address" autocomplete="street-address" />
                     <mat-icon matSuffix>location_on</mat-icon>
@@ -128,12 +139,101 @@
                     <mat-error *ngIf="f.address.touched && f.address.hasError('required')">
                         Address is required.
                     </mat-error>
-                    <mat-error *ngIf="f.address.touched && f.address.hasError('maxlength')">
-                        Max 200 characters.
+                </mat-form-field>
+
+                <!-- ========================= -->
+                <!-- Vehicle Information -->
+                <!-- ========================= -->
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Make (Marca)</mat-label>
+                    <mat-select formControlName="make">
+                        <mat-option *ngFor="let item of makes" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.make.touched && f.make.hasError('required')">
+                        Make is required.
                     </mat-error>
                 </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Model (Modelo)</mat-label>
+                    <mat-select formControlName="model" [disabled]="!f.make.value">
+                        <mat-option *ngFor="let item of models" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f.model.touched && f.model.hasError('required')">
+                        Model is required.
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Body style (Tipo)</mat-label>
+                    <mat-select formControlName="bodyStyle">
+                        <mat-option *ngFor="let item of bodyStyles" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Color</mat-label>
+                    <mat-select formControlName="color">
+                        <mat-option *ngFor="let item of colors" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Engine (Cilindros)</mat-label>
+                    <mat-select formControlName="engine">
+                        <mat-option *ngFor="let item of engines" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Transmission (Transmisión)</mat-label>
+                    <mat-select formControlName="transmission">
+                        <mat-option *ngFor="let item of transmissions" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Drive type (Tipo de tracción)</mat-label>
+                    <mat-select formControlName="driveType">
+                        <mat-option *ngFor="let item of driveTypes" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-half">
+                    <mat-label>Fuel type (Tipo de combustible)</mat-label>
+                    <mat-select formControlName="fuelType">
+                        <mat-option *ngFor="let item of fuelTypes" [value]="item.id">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="fi-field fi-span-2">
+                    <mat-label>VIN (Serial de carrocería)</mat-label>
+                    <input matInput formControlName="vin" />
+                    <mat-icon matSuffix>qr_code</mat-icon>
+                </mat-form-field>
+
             </div>
 
+            <!-- ========================= -->
+            <!-- Submit -->
+            <!-- ========================= -->
             <button mat-flat-button color="primary" class="fi-btn" type="submit"
                 [disabled]="isSubmitting || form.invalid">
                 <mat-icon>how_to_reg</mat-icon>
@@ -141,7 +241,8 @@
             </button>
 
             <p class="fi-footnote">
-                By creating an account you agree to our <a href="#" class="fi-link">Terms</a>.
+                By creating an account you agree to our
+                <a href="#" class="fi-link">Terms</a>.
             </p>
         </form>
     </mat-card>
