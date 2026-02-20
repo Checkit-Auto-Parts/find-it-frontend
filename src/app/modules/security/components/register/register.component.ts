@@ -181,7 +181,7 @@ export class RegisterComponent {
         this.isLoadingCatalog = true;
 
         forkJoin({
-            // makes: this.vehicleCatalog.getMakes(),
+            makes: this.vehicleCatalog.getMakes(),
             bodyStyles: this.vehicleCatalog.getBodyStyles(),
             // colors: this.vehicleCatalog.getColors(),
             // engines: this.vehicleCatalog.getEngines(),
@@ -192,7 +192,7 @@ export class RegisterComponent {
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
                 next: (res) => {
-                    // this.makes = res.makes ?? [];
+                    this.makes = res.makes ?? [];
                     this.bodyStyles = res.bodyStyles ?? [];
                     // this.colors = res.colors ?? [];
                     // this.engines = res.engines ?? [];
