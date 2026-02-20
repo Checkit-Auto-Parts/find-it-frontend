@@ -116,7 +116,7 @@ export class LoginComponent {
 				this.loginValid = true;
 				let token : LoginResponseDTO = response.data!;
 				this.authService.saveToken(token);
-				// this.setCurrentUser();
+				this.setCurrentUser();
 				this.authService.setCurrentUser(token);
 				this.redirectByType();
 			}

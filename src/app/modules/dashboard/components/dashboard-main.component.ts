@@ -297,6 +297,7 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
             takeUntilDestroyed(this.destroyRef)
         ).subscribe(
             (grouped: any) => {
+
                 this.messagesByOrder.clear();
 
                 // store in map
@@ -336,5 +337,10 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
             },
             (err) => console.error('Error loading messages:', err)
         );
+    }
+
+    openMessagesPanel(order: OrderDTO) {
+        console.log('Open messages for order', order.id);
+        // later you can open a side drawer or dialog
     }
 }
