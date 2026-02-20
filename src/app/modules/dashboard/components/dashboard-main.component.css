@@ -20,6 +20,10 @@
     margin-top: 0.5rem;
 }
 
+/* ===============================
+   Header actions (buttons on top)
+=================================*/
+
 .header-actions {
     display: flex;
     align-items: center;
@@ -34,68 +38,21 @@
     flex-wrap: wrap;
 }
 
-.msg-preview {
-    max-width: 260px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.2;
-}
-
-.msg-meta {
-    font-size: 12px;
-    opacity: 0.7;
-}
+/* ===============================
+   Generic helpers
+=================================*/
 
 .muted {
     opacity: 0.6;
 }
 
-.msg-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    max-width: 320px;
-}
-
-.msg-top {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.msg-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 22px;
-    height: 22px;
-    padding: 0 6px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    background: rgba(32, 79, 159, 0.12);
-}
-
-.msg-date {
-    font-size: 12px;
-    opacity: .7;
-}
-
-.msg-preview {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 13px;
-}
-
-.muted {
-    opacity: .6;
-}
-
 /* ===============================
-   Messages Cell Layout
+   Messages Column UI (FINAL)
 =================================*/
+
+.mat-column-Messages {
+    width: 280px;
+}
 
 .msg-cell {
     display: flex;
@@ -110,17 +67,12 @@
     opacity: 0.85;
 }
 
-/* ===============================
-   Header Row (badge + time)
-=================================*/
-
 .msg-header {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-/* Badge */
 .msg-badge {
     background: #204f9f20;
     color: #204f9f;
@@ -151,7 +103,7 @@
     }
 }
 
-/* Unread indicator */
+/* Optional unread dot */
 .msg-dot {
     width: 6px;
     height: 6px;
@@ -159,15 +111,17 @@
     border-radius: 50%;
 }
 
-/* Time text */
 .msg-time {
     font-size: 11px;
     opacity: 0.7;
 }
 
-/* ===============================
-   Preview Row
-=================================*/
+/* List of messages (last 2) */
+.msg-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
 
 .msg-preview {
     display: flex;
@@ -177,6 +131,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
+    line-height: 1.2;
 }
 
 .msg-icon {
@@ -184,22 +139,10 @@
     opacity: 0.7;
 }
 
-/* ===============================
-   Empty State
-=================================*/
-
 .msg-empty {
     display: flex;
     align-items: center;
     gap: 6px;
     font-size: 12px;
     opacity: 0.5;
-}
-
-/* ===============================
-   Column Width Tuning
-=================================*/
-
-.mat-column-Messages {
-    width: 280px;
 }

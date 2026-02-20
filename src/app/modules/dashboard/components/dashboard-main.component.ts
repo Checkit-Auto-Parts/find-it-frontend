@@ -3,7 +3,7 @@ import { AfterViewInit, Component, DestroyRef, OnInit, ViewChild, inject } from 
 import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 import { MaterialTableModule } from '../../../core/modules/material-table.module';
-import { AsyncPipe, DatePipe, NgClass, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, NgClass, NgIf } from '@angular/common';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { CustomPaginatorComponent } from "../../../core/components/table/custom-paginator/custom-paginator.component";
@@ -35,7 +35,8 @@ type MessagesByOrderResponse = Record<number, SearchHistoryMessageDto[]>;
         MatSort,
         CustomPaginatorComponent,
         AsyncPipe,
-        DatePipe
+        DatePipe,
+        CommonModule
     ],
     templateUrl: './dashboard-main.component.html',
     styleUrl: './dashboard-main.component.css'
@@ -307,6 +308,7 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
                 }
 
                 // enrich rows
+                // ⭐ ENRICH ROWS (MULTI MESSAGE PREVIEW)
                 for (const order of orders) {
                     const id = order.id!;
                     const msgs = this.messagesByOrder.get(id) ?? [];
@@ -314,19 +316,25 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
                     order.messagesCount = msgs.length;
 
                     if (msgs.length > 0) {
-                        // sort by messageAt descending (latest first)
+
                         const sorted = [...msgs].sort(
-                            (a, b) => new Date(b.messageAt).getTime() - new Date(a.messageAt).getTime()
+                            (a, b) =>
+                                new Date(b.messageAt).getTime() -
+                                new Date(a.messageAt).getTime()
                         );
+
+                        // ⭐ keep last TWO messages
+                        order.messagesPreview = sorted.slice(0, 2);
 
                         const last = sorted[0];
                         order.lastMessageAt = last.messageAt;
 
-                        // pick best text (adapt if you have a dedicated message body field)
                         order.lastMessageText =
                             (last.searchCriteria ?? '').trim() ||
                             `${last.messageType}${last.fromWa ? ' • ' + last.fromWa : ''}`;
+
                     } else {
+                        order.messagesPreview = [];
                         order.lastMessageAt = undefined;
                         order.lastMessageText = '';
                     }
