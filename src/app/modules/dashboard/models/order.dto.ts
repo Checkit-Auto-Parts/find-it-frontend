@@ -1,4 +1,5 @@
 import { Guid } from "guid-typescript";
+import { SearchHistoryMessageDto } from "../../search-history/models/search-history.dto";
 
 export interface OrderDTO {
     id: number;
@@ -24,4 +25,5 @@ export interface OrderDTO {
     messagesCount?: number;
     lastMessageText?: string;
     lastMessageAt?: string;
+    messagesPreview?: SearchHistoryMessageDto[];
 }
