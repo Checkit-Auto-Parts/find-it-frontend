@@ -108,15 +108,16 @@ export class LoginComponent {
 	}
 
 	verification(response: StateExecution<LoginResponseDTO>) {
-		console.log('response => ', response.data?.result.succeeded);
+		console.log('response => ', response);
 		if (response != null) {
-			if (!response.data?.result.succeeded) {
+			if (!response.status) {
 				this.dialogMessageService.showErrorDialog('Autenticación fallida, revise sus credenciales.');
 			} else {
 				this.loginValid = true;
-				this.authService.saveToken(response.data);
+				let token : LoginResponseDTO = response.data!;
+				this.authService.saveToken(token);
 				// this.setCurrentUser();
-				this.authService.setCurrentUser(response.data);
+				this.authService.setCurrentUser(token);
 				this.redirectByType();
 			}
 		} else {

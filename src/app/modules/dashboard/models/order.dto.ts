@@ -21,4 +21,7 @@ export interface OrderDTO {
     vehiculeYear: number;
     languageId: number;
     comments: string;
+    messagesCount?: number;
+    lastMessageText?: string;
+    lastMessageAt?: string;
 }
