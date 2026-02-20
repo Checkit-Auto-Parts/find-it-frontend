@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { BodyStyleService } from '../bodyStyle/body-style.service';
 import { LookupItemDto } from '../../models/lookup-item.dto';
+import { MakeService } from '../bodyStyle/make.service';
 
 @Injectable({ providedIn: 'root' })
 export class VehicleCatalogService {
-    constructor(private bodyStyleService: BodyStyleService) { }
+    constructor(private bodyStyleService: BodyStyleService, private makeService: MakeService) { }
 
     // ✅ Ready now
     getBodyStyles(): Observable<LookupItemDto[]> {
@@ -14,7 +15,7 @@ export class VehicleCatalogService {
 
     // 🚧 TODO - implement when you share controllers
     getMakes(): Observable<LookupItemDto[]> {
-        return of([]);
+        return this.makeService.getLookup();
     }
 
     getModelsByMake(makeId: string | number): Observable<LookupItemDto[]> {
