@@ -26,4 +26,5 @@ export interface OrderDTO {
     lastMessageText?: string;
     lastMessageAt?: string;
     messagesPreview?: SearchHistoryMessageDto[];
+    phoneNumber: string;
 }
