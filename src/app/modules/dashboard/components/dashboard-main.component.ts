@@ -170,8 +170,8 @@ export class DashboardMainComponent implements OnInit, AfterViewInit {
 
     openDialogSendComment(orderDto: OrderDTO): void {
         this.dialog.open(UpdateOrderComponent, {
-            maxWidth: '640px',
-            height: 'auto',
+            width: '520px',
+            maxWidth: '95vw',
             data: orderDto,
         }).afterClosed()
             .pipe(takeUntilDestroyed(this.destroyRef))

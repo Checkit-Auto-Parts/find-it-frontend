@@ -52,9 +52,10 @@ export class UpdateOrderComponent implements OnInit {
     createFormControls() {
         this.orderForm = this.formBuilder.group({
             comment: new FormControl({value: '', disabled: this.isReadonly}, [Validators.required, Validators.maxLength(500)]),    
-            phoneNumber: new FormControl(0, [Validators.required, Validators.maxLength(15)]),
+            phoneNumber: new FormControl(this.data.phoneNumber, [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10), Validators.maxLength(15)]),
             isCustomizedMessage: new FormControl(false),
         });
+        this.orderForm.get('phoneNumber')?.disable();
     }
 
     enable(event: any) {

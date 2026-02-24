@@ -1,50 +1,38 @@
-<form [formGroup]="orderForm" autocomplete="off">
-    <h1 class="head mb-3" 
-        cdkDrag
-        cdkDragRootElement=".cdk-overlay-pane"
-        cdkDragHandle
-        mat-dialog-title>
-        Phone Number
-    </h1>
+<form [formGroup]="orderForm" autocomplete="off" class="send-msg-form">
+    <h2 class="dialog-title" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle mat-dialog-title>
+        Send WhatsApp Template
+    </h2>
+
+    <!-- Template label -->
+    <div class="template-bar">
+        <span class="template-label">TEMPLATE</span>
+
+        <mat-chip-set class="template-chips">
+            <mat-chip class="template-chip" selected>hello_world</mat-chip>
+        </mat-chip-set>
+    </div>
+
     <mat-dialog-content class="mat-typography">
         <div class="form-container">
-      
-            <mat-form-field class="f-1">
-                <input matInput
-                        type="number"
-                        class="medium"
-                        inputmode="numeric"
-                        formControlName="phoneNumber"
-                        onlyDigits
-                        placeholder="Like this: 584195555555"/>
+            <mat-form-field class="f-1" appearance="fill">
+                <mat-label>Phone Number</mat-label>
+
+                <input matInput type="text" inputmode="numeric" formControlName="phoneNumber" onlyDigits readonly
+                    class="phone-readonly" placeholder="Like this: 584195555555" />
+
+                <mat-icon matPrefix class="prefix-icon">call</mat-icon>
+                <mat-hint>We’ll send the WhatsApp “hello_world” template to this number.</mat-hint>
             </mat-form-field>
-            <!-- <mat-checkbox class="f-1" formControlName="isCustomizedMessage"  (click)="enable($event)">
-                Mensaje Personalizado
-            </mat-checkbox>
-            <mat-form-field class="f-1">
-                <textarea matInput
-                        formControlName="comment"
-                        type="textarea"
-                        maxlength="100"
-                        class="medium"
-                        [readonly]="isReadonly"
-                        placeholder="Mensaje"></textarea>
-                <mat-error>Escriba aquí</mat-error>
-            </mat-form-field> -->
-            
         </div>
     </mat-dialog-content>
-  
-    <mat-dialog-actions align="center" class="mb-3">
-        <button mat-flat-button 
-                color="warn" 
-                mat-dialog-close>
+
+    <mat-dialog-actions align="end" class="actions-bar">
+        <button mat-stroked-button color="warn" mat-dialog-close>
             Cancel
         </button>
-        <button mat-flat-button
-                color="accent"
-                cdkFocusInitial
-                (click)="sendMessage()">
+
+        <button mat-flat-button color="primary" cdkFocusInitial (click)="sendMessage()">
+            <mat-icon>send</mat-icon>
             Send Message
         </button>
     </mat-dialog-actions>
